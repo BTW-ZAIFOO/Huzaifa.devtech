@@ -15,39 +15,108 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    role: "Senior Software Engineer",
-    company: "Tech Company",
-    duration: "Mar 2022 - Present",
+    role: "Chief Marketing Officer & Senior Software Engineer",
+    company: "Nexgenztech",
+    duration: "Feb 2026 - Present",
     icon: <FaRocket />,
     description:
-      "Leading the design and development of enterprise-grade platforms, SaaS ecosystems, and high-performance cloud-native applications serving thousands of users globally.",
+      "Driving business growth and building scalable digital solutions by combining software engineering, AI innovation, and strategic marketing leadership.",
     achievements: [
-      "Architected enterprise-scale SaaS infrastructure using modern paradigms.",
-      "Boosted core application performance metrics by 60% system-wide.",
-      "Led cross-functional engineering teams using agile methodologies.",
-      "Integrated secure, AI-powered automation workflows to streamline core processes.",
+      "Led the development of full-stack web applications and AI-powered business solutions.",
+      "Built and delivered scalable MERN stack applications with a strong focus on performance and user experience.",
+      "Developed AI chatbots, automation systems, and business-focused digital products.",
+      "Mentored and trained interns in React.js, Node.js, MongoDB, API integration, and software development best practices.",
+      "Contributed to company growth through lead generation strategies, brand positioning, and digital marketing initiatives.",
+      "Improved team productivity and project execution through structured collaboration and workflow optimization.",
     ],
     tags: [
-      "Enterprise Systems",
-      "Cloud Architecture",
-      "Performance Optimization",
-      "Team Leadership",
+      "Full Stack Development",
+      "MERN Stack",
+      "AI Solutions & Automation",
+      "Product Development",
+      "Technical Leadership",
+      "Digital Marketing Strategy",
+      "Team Mentorship",
+      "Business Growth & Lead Generation",
     ],
   },
   {
-    role: "Full Stack Developer",
-    company: "Software House",
-    duration: "Jan 2020 - Feb 2022",
+    role: "Senior Software Engineer",
+    company: "Invextech",
+    duration: "Oct 2024 - Jul 2025",
     icon: <FaCode />,
     description:
-      "Delivered scalable full-stack solutions across fintech, e-commerce, healthcare, and SaaS industries while ensuring performance, security, and maintainability.",
+      "Built scalable MERN stack applications and modern web solutions while contributing to client projects, team collaboration, and intern mentorship.",
     achievements: [
-      "Successfully built and deployed 25+ production-ready custom software applications.",
-      "Designed and documented highly flexible REST & GraphQL architectures.",
-      "Implemented ironclad security layers featuring state-of-the-art JWT/OAuth systems.",
-      "Optimized complex database relations and significantly reduced API query latency.",
+      "Developed multiple production-ready MERN stack applications.",
+      "Built responsive UIs using Tailwind CSS, ShadCN UI, and Aceternity UI.",
+      "Integrated APIs and implemented dynamic application features.",
+      "Created dashboards and data visualizations using React ApexCharts.",
+      "Worked on client-based projects to solve real business challenges.",
+      "Mentored interns in React.js and MERN stack development.",
     ],
-    tags: ["Full Stack", "GraphQL / REST", "Next.js", "Database Tuning"],
+    tags: [
+      "MERN Stack",
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "API Integration",
+      "Tailwind CSS",
+      "Software Engineering",
+    ],
+  },
+  {
+    role: "Frontend Developer",
+    company: "Mindgigs, Peshawar",
+    duration: "Feb 2024 - Oct 2024",
+    icon: <FaCode />,
+    description:
+      "Progressed from Junior React Developer to Frontend Developer while building responsive web applications and strengthening expertise in modern frontend technologies.",
+    achievements: [
+      "Advanced from Junior React Developer to Frontend Developer.",
+      "Built reusable React.js components and responsive user interfaces.",
+      "Developed optimized web pages focused on performance and user experience.",
+      "Worked with Bootstrap and Tailwind CSS for scalable frontend development.",
+      "Contributed to company projects and team-based development workflows.",
+      "Developed the company's certificate page using React.js.",
+    ],
+    tags: [
+      "React.js",
+      "JavaScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Bootstrap",
+      "Responsive Design",
+      "Frontend Development",
+      "UI Development",
+    ],
+  },
+  {
+    role: "Web Development Intern",
+    company: "Codevenator Software Solutions",
+    duration: "Jan 2023 - Mar 2023",
+    icon: <FaCode />,
+    description:
+      "Built a strong foundation in web development through hands-on experience with frontend technologies and real-world project work during a software house internship.",
+    achievements: [
+      "Learned core web development concepts using HTML, CSS, and JavaScript.",
+      "Built and completed an internship project applying practical development skills.",
+      "Developed responsive web pages and basic user interfaces.",
+      "Improved problem-solving and debugging abilities.",
+      "Gained experience working in a professional software development environment.",
+      "Strengthened understanding of frontend development best practices.",
+    ],
+    tags: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Responsive Design",
+      "Frontend Development",
+      "Web Development",
+      "Debugging",
+      "Problem Solving",
+    ],
   },
 ];
 
@@ -109,8 +178,9 @@ export default function Experience() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-gray-400/80 leading-relaxed text-sm sm:text-base font-light">
-            A proven trajectory of building scalable architectures, guiding
-            high-velocity teams, and shipping impactful software products.
+            From initial concept and interactive UI layout to deployment-ready
+            code, I build the full-stack architecture that modern web
+            applications run on.
           </p>
         </motion.div>
 

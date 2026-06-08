@@ -9,32 +9,118 @@ interface Project {
   tech: string[];
   sourceUrl: string;
   liveUrl: string;
+  imageUrl: string; // Added image URL tracking
 }
 
 const projects: Project[] = [
   {
-    title: "Edge Observability Engine",
+    title: "Personal Portfolio",
     description:
-      "Distributed telemetry platform capturing eBPF network metrics and system vitals at the edge with <2ms analytical query times.",
-    tech: ["Go", "ClickHouse", "Next.js", "GraphQL"],
-    sourceUrl: "#",
-    liveUrl: "#",
+      "A high-performance digital showroom built with a focus on core web vitals, fluent motion design, and responsive breakpoint architectures.",
+    tech: [
+      "Next.js",
+      "MongoDB",
+      "Express.js",
+      "Node.js",
+      "Tailwind CSS",
+      "React Icons",
+    ],
+    sourceUrl: "https://github.com/BTW-ZAIFOO/Huzaifa.devtech.git",
+    liveUrl: "https://huzaifa-devtech.vercel.app/",
+    imageUrl:
+      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Decentralized Event Ledger",
+    title: "Student Task Management Platform",
     description:
-      "High-throughput, fault-tolerant event streaming platform implementing Raft consensus for real-time distributed data validation.",
-    tech: ["Rust", "TypeScript", "gRPC", "WebSockets"],
-    sourceUrl: "#",
-    liveUrl: "#",
+      "A production-ready SaaS client utility designed to streamline academic workflows, offering dynamic scheduling, real-time data persistence, and sub-atomic component structures.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Express.js",
+      "Tailwind CSS",
+      "Framer Motion",
+      "React Icons",
+    ],
+    sourceUrl:
+      "https://github.com/BTW-ZAIFOO/Student-Task-Management-Website.git",
+    liveUrl: "https://student-task-management-website.vercel.app/",
+    imageUrl:
+      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Autonomous CI/CD Pipeline",
+    title: "Dynamic Resume Builder",
     description:
-      "Cloud-native orchestration engine that automatically builds, tests, and optimizes multi-architecture container configurations using WASM-based sandboxing.",
-    tech: ["Next.js", "Kubernetes", "Redis", "Docker"],
-    sourceUrl: "#",
-    liveUrl: "#",
+      "An intuitive client-side document compiler enabling structural styling, interactive font syncing, and real-time template switching workflows.",
+    tech: ["Next.js", "Tailwind CSS", "Google Fonts", "React Icons"],
+    sourceUrl: "https://github.com/BTW-ZAIFOO/Resume-builder.git",
+    liveUrl: "https://resume-builder-flame-theta.vercel.app/",
+    imageUrl:
+      "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Hawkrix Corporate Platform",
+    description:
+      "A secure, scalable enterprise landing framework optimized for discoverability, asset caching, and modern commercial design guidelines.",
+    tech: [
+      "Next.js",
+      "MongoDB",
+      "Express.js",
+      "Node.js",
+      "Tailwind CSS",
+      "React Icons",
+    ],
+    sourceUrl: "https://github.com/BTW-ZAIFOO/Hawkrix.git",
+    liveUrl: "https://hawkrix.vercel.app/",
+    imageUrl:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Astro Zen Minimal Portfolio",
+    description:
+      "An ultra-lightweight portfolio site built on a static-first framework to achieve near-instantaneous page paint scores and clean design paths.",
+    tech: ["Astro", "Tailwind CSS", "Framer Motion"],
+    sourceUrl: "https://github.com/BTW-ZAIFOO/Personal-Portfolio.git",
+    liveUrl: "https://personal-portfolio-huzaifa-khan.vercel.app/",
+    imageUrl:
+      "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "TradesPeople Platform",
+    description:
+      "A conceptual dynamic directory structure featuring advanced filtration UI states, highly customizable theme context, and structured data layouts.",
+    tech: ["Next.js", "Tailwind CSS", "Google Fonts", "React Icons"],
+    sourceUrl: "https://github.com/BTW-ZAIFOO/tradespeople.git",
+    liveUrl: "https://tradespeople.vercel.app/",
+    imageUrl:
+      "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Invextech Corporate Node",
+    description:
+      "A business-centric application displaying deep structural component architecture, performance-optimized media distribution, and global asset management.",
+    tech: ["Next.js", "Tailwind CSS", "Google Fonts", "React Icons"],
+    sourceUrl: "https://github.com/BTW-ZAIFOO/Invextech-Site.git",
+    liveUrl: "https://invextech-site.vercel.app/Home",
+    imageUrl:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Real-time Chat Moderation Ecosystem",
+    description:
+      "An intricate full-stack communication infrastructure featuring persistent WebSockets connections, secure isolated OTP authentication, and automated moderation layers.",
+    tech: [
+      "Next.js",
+      "Web-Sockets",
+      "OTP Verification",
+      "Tailwind CSS",
+      "Google Fonts",
+      "React Icons",
+    ],
+    sourceUrl: "https://github.com/BTW-ZAIFOO/huzaifa-devv.git",
+    liveUrl: "https://huzaifa-devv.vercel.app/",
+    imageUrl:
+      "https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -123,10 +209,19 @@ export default function Projects() {
 
             {/* Main Interactive Card Structure */}
             <div className="relative flex flex-col h-full rounded-[24px] border border-zinc-800 bg-zinc-950/40 backdrop-blur-2xl overflow-hidden shadow-2xl transition-all duration-300 group-hover:border-zinc-700/80">
-              {/* Card Geometric Banner / Grid Texture */}
-              <div className="h-32 sm:h-36 bg-linear-to-br from-blue-950/20 via-zinc-950 to-purple-950/20 border-b border-zinc-900 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-15 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-size-[16px_16px]" />
-                <div className="absolute inset-0 bg-linear-to-t from-zinc-950 to-transparent" />
+              {/* Dynamic Project Image Header with Fallback Pattern */}
+              <div className="h-44 sm:h-48 bg-zinc-900 border-b border-zinc-900 relative overflow-hidden">
+                {project.imageUrl ? (
+                  <img
+                    src={project.imageUrl}
+                    alt={`${project.title} abstract visual preview`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="absolute inset-0 opacity-15 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-size-[16px_16px]" />
+                )}
+                <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
               </div>
 
               {/* Core Content Area */}

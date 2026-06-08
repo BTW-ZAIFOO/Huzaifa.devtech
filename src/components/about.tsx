@@ -12,7 +12,7 @@ import {
 const expertise = [
   {
     icon: <FaCode className="w-4 h-4 sm:w-5 sm:h-5" />,
-    title: "Frontend Engineering",
+    title: "Frontend Development",
     description:
       "Developing high-performance web applications using React, Next.js, and TypeScript with a strong focus on scalable UI architectures.",
   },
@@ -20,7 +20,7 @@ const expertise = [
     icon: <FaMobileAlt className="w-4 h-4 sm:w-5 sm:h-5" />,
     title: "Mobile Development",
     description:
-      "Building native-quality cross-platform mobile applications for iOS and Android environments using React Native and Flutter.",
+      "Building native-quality cross-platform mobile applications for iOS and Android environments using Flutter.",
   },
   {
     icon: <FaServer className="w-4 h-4 sm:w-5 sm:h-5" />,
@@ -78,24 +78,24 @@ export default function About() {
 
             {/* Title */}
             <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.15] text-white">
-              Building{" "}
+              Designing{" "}
               <span className="bg-linear-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent block sm:inline lg:block">
-                Exceptional Digital
+                Immersive User
               </span>{" "}
-              Experiences
+              Interfaces
             </h2>
 
             {/* Description Blocks */}
             <div className="mt-6 space-y-4 text-sm sm:text-base text-neutral-400 leading-relaxed max-w-md lg:max-w-none">
               <p>
-                I am a Senior Software Engineer with over 4 years of
-                professional experience architecting reliable full-stack web
-                platforms, custom mobile ecosystems, and intelligent machine
-                learning integrations.
+                I am a Software Engineer with over 4 years of professional
+                experience architecting reliable full-stack web platforms,
+                custom mobile ecosystems, and intelligent machine learning
+                integrations.
               </p>
               <p>
                 I actively manage the comprehensive development
-                lifecycle—ranging from baseline system engineering and crisp
+                lifecycle, ranging from baseline system engineering and crisp
                 design patterns to robust cloud optimizations and automated
                 deployments.
               </p>
@@ -110,6 +110,9 @@ export default function About() {
                 "TypeScript",
                 "AI Integration",
                 "Cloud Solutions",
+                "Flutter",
+                "Firebase",
+                "MERN Stack",
               ].map((item) => (
                 <span
                   key={item}
