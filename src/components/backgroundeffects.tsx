@@ -5,7 +5,10 @@ import { motion } from "framer-motion";
 export default function BackgroundEffects() {
   return (
     // The container is fixed, spans the full viewport, and hides overflow to prevent unwanted scrollbars
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden select-none" aria-hidden="true">
+    <div
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden select-none"
+      aria-hidden="true"
+    >
       {/* Ambient Master Glow - Soft warm center to give depth to the background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[400px] bg-indigo-500/5 blur-[180px] rounded-full mix-blend-screen" />
 

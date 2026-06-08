@@ -51,15 +51,22 @@ export default function Contact() {
               Get in Touch
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-4 leading-[1.15]">
-              Let’s Build Something <span className="bg-linear-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Exceptional</span>
+              Let’s Build Something{" "}
+              <span className="bg-linear-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+                Exceptional
+              </span>
             </h2>
             <p className="text-white/60 mt-4 text-base sm:text-lg leading-relaxed max-w-md">
-              Have an exciting idea or a complex problem to solve? Drop a message, and let's craft a scalable digital solution together.
+              Have an exciting idea or a complex problem to solve? Drop a
+              message, and let's craft a scalable digital solution together.
             </p>
           </motion.div>
 
           {/* Quick Contact Footer / Micro details */}
-          <motion.div variants={itemVariants} className="hidden lg:block text-sm text-white/40">
+          <motion.div
+            variants={itemVariants}
+            className="hidden lg:block text-sm text-white/40"
+          >
             <p>Typically responds within 24 hours.</p>
           </motion.div>
         </div>

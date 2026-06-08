@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react";
 export default function CustomCursor() {
   const [isMobile, setIsMobile] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
-  
+
   // Use refs instead of state for the position to prevent constant React re-renders
   const cursorRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef({ x: 0, y: 0 });
@@ -14,7 +14,9 @@ export default function CustomCursor() {
   useEffect(() => {
     // 1. Check if device is mobile/touch-based
     const checkDevice = () => {
-      const mobile = window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768;
+      const mobile =
+        window.matchMedia("(pointer: coarse)").matches ||
+        window.innerWidth < 768;
       setIsMobile(mobile);
     };
 
@@ -31,11 +33,13 @@ export default function CustomCursor() {
 
     // 3. Smooth animation loop (Lerp effect)
     let animationFrameId: number;
-    
+
     const render = () => {
       // Linear interpolation for that premium "heavy/lagging" lag effect
-      trailingRef.current.x += (positionRef.current.x - trailingRef.current.x) * 0.15;
-      trailingRef.current.y += (positionRef.current.y - trailingRef.current.y) * 0.15;
+      trailingRef.current.x +=
+        (positionRef.current.x - trailingRef.current.x) * 0.15;
+      trailingRef.current.y +=
+        (positionRef.current.y - trailingRef.current.y) * 0.15;
 
       if (cursorRef.current) {
         // Use translate3d for hardware acceleration (smooth rendering)
@@ -49,9 +53,9 @@ export default function CustomCursor() {
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (
-        target.tagName === "A" || 
-        target.tagName === "BUTTON" || 
-        target.closest("button") || 
+        target.tagName === "A" ||
+        target.tagName === "BUTTON" ||
+        target.closest("button") ||
         target.closest("a") ||
         target.getAttribute("role") === "button"
       ) {
@@ -93,10 +97,10 @@ export default function CustomCursor() {
         `}
       >
         {/* Inner Precision Dot */}
-        <div 
+        <div
           className={`rounded-full bg-white transition-all duration-200
             ${isHovering ? "w-1 h-1 bg-transparent" : "w-1.5 h-1.5"}
-          `} 
+          `}
         />
       </div>
     </div>

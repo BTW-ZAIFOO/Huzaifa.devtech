@@ -27,7 +27,12 @@ const experiences: ExperienceItem[] = [
       "Led cross-functional engineering teams using agile methodologies.",
       "Integrated secure, AI-powered automation workflows to streamline core processes.",
     ],
-    tags: ["Enterprise Systems", "Cloud Architecture", "Performance Optimization", "Team Leadership"],
+    tags: [
+      "Enterprise Systems",
+      "Cloud Architecture",
+      "Performance Optimization",
+      "Team Leadership",
+    ],
   },
   {
     role: "Full Stack Developer",
@@ -74,7 +79,10 @@ export default function Experience() {
       className="relative overflow-hidden py-24 sm:py-32 bg-[#030712]"
     >
       {/* High-End Ambient Lighting Backdrops */}
-      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+      <div
+        className="absolute inset-0 pointer-events-none select-none overflow-hidden"
+        aria-hidden="true"
+      >
         <div className="absolute top-[-10%] right-[-10%] h-[600px] w-[600px] rounded-full bg-blue-600/10 blur-[150px]" />
         <div className="absolute bottom-[5%] left-[-10%] h-[600px] w-[600px] rounded-full bg-purple-600/10 blur-[180px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-cyan-500/5 blur-[200px]" />
@@ -101,7 +109,8 @@ export default function Experience() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-gray-400/80 leading-relaxed text-sm sm:text-base font-light">
-            A proven trajectory of building scalable architectures, guiding high-velocity teams, and shipping impactful software products.
+            A proven trajectory of building scalable architectures, guiding
+            high-velocity teams, and shipping impactful software products.
           </p>
         </motion.div>
 
@@ -136,7 +145,6 @@ export default function Experience() {
                   {/* Card Block Container */}
                   <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-7">
                     <div className="group relative overflow-hidden rounded-xl border border-white/5 bg-white/1 backdrop-blur-xl p-6 sm:p-7 transition-all duration-500 hover:border-indigo-500/30 hover:bg-white/2 hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)]">
-                      
                       {/* Interactive Background Gradient Flare on Hover */}
                       <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 pointer-events-none">
                         <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-indigo-500/5 blur-3xl" />
@@ -191,7 +199,6 @@ export default function Experience() {
                           </span>
                         ))}
                       </div>
-
                     </div>
                   </div>
                 </motion.div>

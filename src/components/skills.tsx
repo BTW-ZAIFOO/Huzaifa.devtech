@@ -1,8 +1,21 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform, animate } from "framer-motion";
-import { FaReact, FaNodeJs, FaDocker, FaAws, FaGitAlt, FaPython } from "react-icons/fa";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  animate,
+} from "framer-motion";
+import {
+  FaReact,
+  FaNodeJs,
+  FaDocker,
+  FaAws,
+  FaGitAlt,
+  FaPython,
+} from "react-icons/fa";
 import {
   SiNextdotjs,
   SiExpress,
@@ -24,7 +37,12 @@ const skills = [
   { name: "React", icon: FaReact, color: "#61DBFB", tier: "outer" },
   { name: "Next.js", icon: SiNextdotjs, color: "#ffffff", tier: "outer" },
   { name: "TypeScript", icon: SiTypescript, color: "#3178C6", tier: "outer" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38BDF8", tier: "outer" },
+  {
+    name: "Tailwind CSS",
+    icon: SiTailwindcss,
+    color: "#38BDF8",
+    tier: "outer",
+  },
   { name: "GraphQL", icon: SiGraphql, color: "#E10098", tier: "outer" },
   { name: "Git", icon: FaGitAlt, color: "#F05032", tier: "outer" },
 
@@ -88,13 +106,15 @@ export default function Skills() {
     const updateRotation = () => {
       const targetSpeed = isHovered ? 0.04 : 0.22; // 80% slower on hover
       // Smoothly interpolate speed
-      currentSpeedRef.current = currentSpeedRef.current + (targetSpeed - currentSpeedRef.current) * 0.1;
+      currentSpeedRef.current =
+        currentSpeedRef.current + (targetSpeed - currentSpeedRef.current) * 0.1;
       rotation.set(rotation.get() + currentSpeedRef.current);
       rotationAnimRef.current = requestAnimationFrame(updateRotation);
     };
     rotationAnimRef.current = requestAnimationFrame(updateRotation);
     return () => {
-      if (rotationAnimRef.current) cancelAnimationFrame(rotationAnimRef.current);
+      if (rotationAnimRef.current)
+        cancelAnimationFrame(rotationAnimRef.current);
     };
   }, [isHovered, rotation]);
 
@@ -113,13 +133,16 @@ export default function Skills() {
               speed: p.speed * 0.92, // Slower decay for longer life
             };
           })
-          .filter((p) => p.speed > 0.3)
+          .filter((p) => p.speed > 0.3),
       );
     }, 16);
     return () => clearInterval(interval);
   }, [particles]);
 
-  const triggerSparks = (e: React.MouseEvent<HTMLDivElement>, color: string) => {
+  const triggerSparks = (
+    e: React.MouseEvent<HTMLDivElement>,
+    color: string,
+  ) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const startX = e.clientX - rect.left;
@@ -178,7 +201,8 @@ export default function Skills() {
           Technical Expertise
         </h2>
         <p className="mt-4 text-sm md:text-base text-white/40 max-w-xl mx-auto leading-relaxed">
-          An enterprise-grade Full-Stack & Cross-Platform Mobile architecture optimized for performance, scale, and clean interfaces.
+          An enterprise-grade Full-Stack & Cross-Platform Mobile architecture
+          optimized for performance, scale, and clean interfaces.
         </p>
       </motion.div>
 
@@ -199,7 +223,9 @@ export default function Skills() {
             Expertise
           </span>
           <span className="text-sm sm:text-base font-bold text-white mt-1 leading-tight tracking-wide">
-            Full Stack<br />Developer
+            Full Stack
+            <br />
+            Developer
           </span>
           <div className="absolute inset-0 rounded-full bg-blue-500/10 blur-xl group-hover:opacity-100 opacity-50 transition-opacity duration-300" />
         </motion.div>
@@ -230,13 +256,15 @@ export default function Skills() {
           const totalAngle = (index / innerSkills.length) * 360;
           const rotationAngle = 0; // Handled by Node component
           const opacity = activeInnerNode === index ? 0.3 : 0.08;
-          
+
           return (
             <motion.div
               key={`line-${skill.name}`}
               className="absolute top-0 left-0 h-0.5 border-t border-dashed border-white origin-left pointer-events-none z-20 transition-opacity duration-300"
               style={{
-                width: dimensions.width * tracks.inner - (dimensions.width < 500 ? 14 : 20),
+                width:
+                  dimensions.width * tracks.inner -
+                  (dimensions.width < 500 ? 14 : 20),
                 top: centerY,
                 left: centerX,
                 opacity: opacity,
@@ -299,7 +327,7 @@ export default function Skills() {
 }
 
 interface OrbitalNodeProps {
-  skill: typeof skills[0];
+  skill: (typeof skills)[0];
   centerX: number;
   centerY: number;
   radius: number;
@@ -321,20 +349,26 @@ function OrbitalNode({
   onNodeHover,
   onSetActive,
   onSetInactive,
-  tier
+  tier,
 }: OrbitalNodeProps) {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const nodeRef = useRef<HTMLDivElement>(null);
-  
+
   const Icon = skill.icon;
 
   // New magnetic mouse effect values
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springConfig = { stiffness: 400, damping: 25 };
-  const magneticX = useSpring(useTransform(mouseX, [-25, 25], [-5, 5]), springConfig);
-  const magneticY = useSpring(useTransform(mouseY, [-25, 25], [-5, 5]), springConfig);
+  const magneticX = useSpring(
+    useTransform(mouseX, [-25, 25], [-5, 5]),
+    springConfig,
+  );
+  const magneticY = useSpring(
+    useTransform(mouseY, [-25, 25], [-5, 5]),
+    springConfig,
+  );
 
   const handleMouseMoveNode = (e: React.MouseEvent<HTMLDivElement>) => {
     onNodeHover(e);
@@ -361,7 +395,7 @@ function OrbitalNode({
       const currentRotation = rotationValue.get();
       const totalAngle = baseAngle + currentRotation;
       const radians = (totalAngle * Math.PI) / 180;
-      
+
       const nodeSize = window.innerWidth < 640 ? 48 : 56; // 12 or 14 rem
       const nodeOffset = nodeSize / 2;
 
@@ -410,7 +444,7 @@ function OrbitalNode({
     >
       {/* Dynamic Pulse Glowing background effect when active */}
       {isHovered && (
-        <motion.div 
+        <motion.div
           className="absolute inset-0 rounded-xl blur-xl"
           style={{ backgroundColor: skill.color, opacity: 0.25 }}
           animate={{ scale: [1, 1.3, 1] }}
@@ -419,8 +453,9 @@ function OrbitalNode({
       )}
 
       {/* The visible card component */}
-      <div className={`w-full h-full rounded-xl border ${tierStyles.borderColor} ${tierStyles.bgColor} ${tierStyles.blur} flex items-center justify-center relative transition-colors duration-300 group-hover:border-white/40 group-hover:shadow-[0_0_20px_${skill.color}30]`}>
-        
+      <div
+        className={`w-full h-full rounded-xl border ${tierStyles.borderColor} ${tierStyles.bgColor} ${tierStyles.blur} flex items-center justify-center relative transition-colors duration-300 group-hover:border-white/40 group-hover:shadow-[0_0_20px_${skill.color}30]`}
+      >
         {/* Glow directly behind the icon */}
         <div
           className="absolute w-4 h-4 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"

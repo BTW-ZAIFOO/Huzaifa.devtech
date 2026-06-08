@@ -50,13 +50,13 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  show: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.7, 
-      ease: [0.23, 1, 0.32, 1] 
-    } 
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.23, 1, 0.32, 1],
+    },
   },
 };
 
@@ -74,7 +74,7 @@ export default function Projects() {
 
       {/* Section Header */}
       <div className="text-center mb-16 md:mb-24">
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -82,7 +82,7 @@ export default function Projects() {
         >
           System Implementations
         </motion.span>
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -91,14 +91,15 @@ export default function Projects() {
         >
           Featured Infrastructures
         </motion.h2>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
           className="mt-4 text-sm sm:text-base text-zinc-400 max-w-2xl mx-auto leading-relaxed"
         >
-          Production-grade applications and scalable systems engineered for extreme performance, security, and intuitive UX.
+          Production-grade applications and scalable systems engineered for
+          extreme performance, security, and intuitive UX.
         </motion.p>
       </div>
 
@@ -122,7 +123,6 @@ export default function Projects() {
 
             {/* Main Interactive Card Structure */}
             <div className="relative flex flex-col h-full rounded-[24px] border border-zinc-800 bg-zinc-950/40 backdrop-blur-2xl overflow-hidden shadow-2xl transition-all duration-300 group-hover:border-zinc-700/80">
-              
               {/* Card Geometric Banner / Grid Texture */}
               <div className="h-32 sm:h-36 bg-linear-to-br from-blue-950/20 via-zinc-950 to-purple-950/20 border-b border-zinc-900 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-15 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-size-[16px_16px]" />
@@ -159,7 +159,10 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-200 transition-colors duration-200"
                   >
-                    <GitBranch size={15} className="text-zinc-600 group-hover:text-blue-400 transition-colors duration-300" />
+                    <GitBranch
+                      size={15}
+                      className="text-zinc-600 group-hover:text-blue-400 transition-colors duration-300"
+                    />
                     <span>Source</span>
                   </a>
 
@@ -174,7 +177,6 @@ export default function Projects() {
                   </a>
                 </div>
               </div>
-
             </div>
           </motion.div>
         ))}

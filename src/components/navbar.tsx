@@ -1,6 +1,11 @@
 "use client";
 
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 
@@ -20,7 +25,7 @@ export default function Navbar() {
     if (isClickScrolling.current) return;
 
     // Active section detection with fallback logic
-    const scrollPosition = latest + 160; 
+    const scrollPosition = latest + 160;
     let currentSection = "About";
 
     for (const item of links) {
@@ -38,11 +43,14 @@ export default function Navbar() {
   });
 
   // Handle smooth locking when user clicks a link directly
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, item: string) => {
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    item: string,
+  ) => {
     e.preventDefault();
     setActive(item);
     setIsOpen(false);
-    
+
     const target = document.getElementById(item.toLowerCase());
     if (target) {
       isClickScrolling.current = true;
@@ -60,7 +68,9 @@ export default function Navbar() {
   // Lock body scroll when mobile drawer is active
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
-    return () => { document.body.style.overflow = "unset"; };
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [isOpen]);
 
   return (
@@ -115,7 +125,9 @@ export default function Navbar() {
                       href={`#${item.toLowerCase()}`}
                       onClick={(e) => handleLinkClick(e, item)}
                       className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-lg focus:outline-none ${
-                        isLinkActive ? "text-white" : "text-neutral-400 hover:text-white"
+                        isLinkActive
+                          ? "text-white"
+                          : "text-neutral-400 hover:text-white"
                       }`}
                     >
                       <span className="relative z-10">{item}</span>
@@ -123,7 +135,11 @@ export default function Navbar() {
                         <motion.span
                           layoutId="desktop-active-pill"
                           className="absolute inset-0 bg-white/5 border border-white/10 rounded-xl"
-                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 380,
+                            damping: 30,
+                          }}
                         />
                       )}
                     </motion.a>
@@ -205,7 +221,7 @@ export default function Navbar() {
                     >
                       <span>{item}</span>
                       {isLinkActive && (
-                        <motion.span 
+                        <motion.span
                           layoutId="mobile-active-indicator"
                           className="h-2 w-2 rounded-full bg-blue-400"
                         />
