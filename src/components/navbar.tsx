@@ -99,7 +99,7 @@ export default function Navbar() {
             />
 
             <div className="relative w-full flex items-center justify-between px-5 py-3.5 md:px-6 md:py-4">
-              {/* Logo with magnetic effect wrapper ready */}
+              {/* Logo */}
               <motion.a
                 href="#about"
                 onClick={(e) => handleLinkClick(e, "About")}
@@ -147,7 +147,7 @@ export default function Navbar() {
                 })}
               </nav>
 
-              {/* CTA Button */}
+              {/* Desktop CTA Button */}
               <div className="hidden lg:flex items-center">
                 <motion.a
                   href="#contact"
@@ -240,8 +240,8 @@ export default function Navbar() {
                 className="w-full"
               >
                 <motion.a
-                  href="#contact"
-                  onClick={(e) => handleLinkClick(e, "Contact")}
+                  href="mailto:huzaifazaifi25@gmail.com"
+                  onClick={() => setIsOpen(false)}
                   whileTap={{ scale: 0.98 }}
                   className="w-full block text-center rounded-2xl bg-linear-to-r from-blue-600 via-indigo-600 to-cyan-600 px-5 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-500/10"
                 >

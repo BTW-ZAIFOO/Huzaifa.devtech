@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter, FaArrowRight } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaArrowRight, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
 const techStack = ["React", "Next.js", "TypeScript", "TailwindCSS", "Node.js"];
 
@@ -64,9 +64,10 @@ export default function Hero() {
               className="mt-5 flex flex-wrap justify-center lg:justify-start items-center gap-2"
             >
               <p className="text-base sm:text-lg text-slate-300 font-medium tracking-normal">
-                Senior Software Engineer{" "}
+                Software Engineer{" "}
                 <span className="text-blue-500/80 mx-1">•</span> Full Stack
-                Developer
+                Developer <span className="text-blue-500/80 mx-1">•</span> <span> Mobile App Developer
+                </span>
               </p>
             </motion.div>
 
@@ -75,7 +76,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="mt-3 flex items-center justify-center lg:justify-start gap-2.5"
+              className="py-5 flex items-center justify-center lg:justify-start gap-2.5"
             >
               <div className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -91,11 +92,9 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="mt-6 text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal opacity-95"
+              className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal opacity-95"
             >
-              Building scalable web applications, SaaS platforms, enterprise
-              software, AI-powered products, and digital experiences with modern
-              technologies and exceptional user experiences.
+              Building scalable web and mobile applications, SaaS platforms, enterprise software, AI-powered products, and digital experiences with modern technologies and exceptional user experiences.
             </motion.p>
 
             {/* Action Buttons */}
@@ -123,9 +122,10 @@ export default function Hero() {
               className="flex justify-center lg:justify-start gap-3 mt-8"
             >
               {[
-                { Icon: FaGithub, link: "#" },
-                { Icon: FaLinkedin, link: "#" },
-                { Icon: FaTwitter, link: "#" },
+                { Icon: FaGithub, link: "https://github.com/BTW-ZAIFOO" },
+                { Icon: FaLinkedin, link: "https://www.linkedin.com/in/huzaifa-bin-afzal-880a37398?utm_source=share_via&utm_content=profile&utm_medium=member_android" },
+                { Icon: FaEnvelope, link: "mailto:huzaifazaifi25@gmail.com" },
+                { Icon: FaWhatsapp, link: "https://wa.me/923105456889" }
               ].map(({ Icon, link }, index) => (
                 <a
                   href={link}
@@ -226,7 +226,7 @@ export default function Hero() {
                 }}
                 className="hidden md:block absolute -left-7 top-1/4 px-3.5 py-2 rounded-xl bg-slate-900/80 backdrop-blur-md border border-white/10 text-xs text-slate-200 font-medium shadow-lg"
               >
-                ⚛️ React Expert
+                ⚛️ MERN Stack Expert
               </motion.div>
 
               <motion.div
@@ -238,7 +238,8 @@ export default function Hero() {
                 }}
                 className="hidden md:block absolute -right-7 bottom-1/4 px-3.5 py-2 rounded-xl bg-slate-900/80 backdrop-blur-md border border-white/10 text-xs text-slate-200 font-medium shadow-lg"
               >
-                🚀 Full Stack Developer
+                🚀 Full Stack Developer <br /> 
+                🚀 Software Engineer
               </motion.div>
             </motion.div>
           </div>
