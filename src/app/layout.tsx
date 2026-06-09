@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Huzaifa Khan | Senior Software Engineer",
   description:
-    "Senior Software Engineer specializing in MERN Stack, AI Solutions, SaaS Platforms and Enterprise Applications.",
+    "Software Engineer specializing in MERN Stack, AI Solutions,Mobile Apps, SaaS Platforms and Enterprise Applications.",
 };
 
 export default function RootLayout({
