@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { easeOut, motion, Variants } from "framer-motion";
 
-
 const containerVariants = {
   hidden: { opacity: 0 },
   show: {

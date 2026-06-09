@@ -94,9 +94,9 @@ export default function About() {
                 integrations.
               </p>
               <p>
-                I actively manage the comprehensive development
-                lifecycle, ranging from baseline system engineering and crisp
-                design patterns to robust cloud optimizations and automated
+                I actively manage the comprehensive development lifecycle,
+                ranging from baseline system engineering and crisp design
+                patterns to robust cloud optimizations and automated
                 deployments.
               </p>
             </div>

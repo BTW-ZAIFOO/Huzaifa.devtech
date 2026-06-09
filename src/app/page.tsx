@@ -11,9 +11,7 @@ import Skills from "@/components/skills";
 import Projects from "@/components/projects";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
-import BackgroundEffects from "@/components/backgroundeffects";
 import ScrollProgress from "@/components/scrollprogress";
-import CustomCursor from "@/components/customcursor";
 import Loader from "@/components/loader";
 
 export default function Home() {
@@ -35,8 +33,6 @@ export default function Home() {
             }}
           >
             <ScrollProgress />
-            <CustomCursor />
-            <BackgroundEffects />
             <Navbar />
             <Hero />
             <About />

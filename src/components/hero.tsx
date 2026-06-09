@@ -12,7 +12,24 @@ const stats = [
   { value: "20+", label: "Happy Clients" },
 ];
 
-export default function Hero() {
+interface HeroProps {
+  projectsSectionId?: string;
+  contactSectionId?: string;
+}
+
+export default function Hero({ projectsSectionId = "projects", contactSectionId = "contact" }: HeroProps) {
+  
+  // Smooth scroll handler for standard section targets
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Fallback: If section isn't on the current page, try native anchor navigation
+      window.location.hash = id;
+    }
+  };
+
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center bg-[#030014] pt-28 pb-16 md:pt-36 md:pb-24">
       {/* Ambient Cosmic Background */}
@@ -66,8 +83,7 @@ export default function Hero() {
               <p className="text-base sm:text-lg text-slate-300 font-medium tracking-normal">
                 Software Engineer{" "}
                 <span className="text-blue-500/80 mx-1">•</span> Full Stack
-                Developer <span className="text-blue-500/80 mx-1">•</span> <span> Mobile App Developer
-                </span>
+                Developer <span className="text-blue-500/80 mx-1">•</span> <span> Mobile App Developer</span>
               </p>
             </motion.div>
 
@@ -104,12 +120,18 @@ export default function Hero() {
               transition={{ delay: 0.6 }}
               className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-8"
             >
-              <button className="group flex items-center justify-center gap-2 rounded-xl px-6.5 py-3.5 text-sm font-semibold bg-linear-to-r from-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
+              <button 
+                onClick={() => handleScroll(projectsSectionId)}
+                className="group flex items-center justify-center gap-2 rounded-xl px-6.5 py-3.5 text-sm font-semibold bg-linear-to-r from-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+              >
                 View Projects
                 <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
               </button>
 
-              <button className="rounded-xl px-6.5 py-3.5 text-sm font-semibold border border-white/10 bg-white/3 backdrop-blur-md text-slate-200 hover:bg-white/8 hover:text-white transition-all duration-300 cursor-pointer">
+              <button 
+                onClick={() => handleScroll(contactSectionId)}
+                className="rounded-xl px-6.5 py-3.5 text-sm font-semibold border border-white/10 bg-white/3 backdrop-blur-md text-slate-200 hover:bg-white/8 hover:text-white transition-all duration-300 cursor-pointer"
+              >
                 Contact Me
               </button>
             </motion.div>
@@ -130,6 +152,8 @@ export default function Hero() {
                 <a
                   href={link}
                   key={index}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10.5 h-10.5 rounded-xl bg-white/3 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-linear-to-br hover:from-blue-600 hover:to-cyan-500 hover:border-transparent hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Icon size={17} />
