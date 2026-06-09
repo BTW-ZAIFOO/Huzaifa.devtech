@@ -79,10 +79,10 @@ export default function Contact() {
       id="contact"
       className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden"
     >
-      {/* Background Glows */}
+      {/* Background Glows: Vibrant red-to-rose structural ambient light */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-[-10%] left-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-blue-500/10 blur-[100px] sm:blur-[150px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-1/4 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-indigo-500/10 blur-[100px] sm:blur-[150px] rounded-full" />
+        <div className="absolute top-[-10%] left-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-red-500/15 blur-[100px] sm:blur-[150px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-1/4 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-rose-500/10 blur-[100px] sm:blur-[150px] rounded-full" />
       </div>
 
       <motion.div
@@ -90,17 +90,18 @@ export default function Contact() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-100px" }}
-        className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 backdrop-blur-md bg-white/2 border border-white/8 rounded-3xl p-6 sm:p-10 lg:p-16 shadow-2xl"
+        className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 backdrop-blur-md bg-red-950/10 border border-red-500/10 rounded-3xl p-6 sm:p-10 lg:p-16 shadow-2xl"
       >
         {/* Left Column: Heading & Context */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
           <motion.div variants={itemVariants}>
-            <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 bg-blue-500/10 px-3 py-1.5 rounded-full border border-blue-500/20">
+            {/* Pill Badge */}
+            <span className="text-xs font-semibold uppercase tracking-widest text-red-400 bg-red-500/10 px-3 py-1.5 rounded-full border border-red-500/20">
               Get in Touch
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-4 leading-[1.15]">
               Let’s Build Something{" "}
-              <span className="bg-linear-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-red-400 to-rose-400 bg-clip-text text-transparent">
                 Exceptional
               </span>
             </h2>
@@ -133,15 +134,15 @@ export default function Contact() {
               value={formData.name}
               onChange={handleChange}
               placeholder=" "
-              className="peer w-full px-5 pt-6 pb-3 rounded-xl bg-white/3 border border-white/8 outline-none text-white text-base transition-all duration-300 focus:border-blue-500/50 focus:bg-white/5"
+              className="peer w-full px-5 pt-6 pb-3 rounded-xl bg-red-950/10 border border-red-500/10 outline-none text-white text-base transition-all duration-300 focus:border-red-500/40 focus:bg-red-950/20"
               required
             />
             <label
               htmlFor="name"
               className="absolute left-5 top-4 text-white/40 text-base pointer-events-none transition-all duration-300 
               peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/40
-              peer-focus:top-2 peer-focus:text-xs peer-focus:text-blue-400
-              not-placeholder-shown:top-2 not-placeholder-shown:text-xs not-placeholder-shown:text-blue-400"
+              peer-focus:top-2 peer-focus:text-xs peer-focus:text-red-400
+              not-placeholder-shown:top-2 not-placeholder-shown:text-xs not-placeholder-shown:text-red-400"
             >
               Your Name
             </label>
@@ -155,15 +156,15 @@ export default function Contact() {
               value={formData.email}
               onChange={handleChange}
               placeholder=" "
-              className="peer w-full px-5 pt-6 pb-3 rounded-xl bg-white/3 border border-white/8 outline-none text-white text-base transition-all duration-300 focus:border-blue-500/50 focus:bg-white/5"
+              className="peer w-full px-5 pt-6 pb-3 rounded-xl bg-red-950/10 border border-red-500/10 outline-none text-white text-base transition-all duration-300 focus:border-red-500/40 focus:bg-red-950/20"
               required
             />
             <label
               htmlFor="email"
               className="absolute left-5 top-4 text-white/40 text-base pointer-events-none transition-all duration-300 
               peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/40
-              peer-focus:top-2 peer-focus:text-xs peer-focus:text-blue-400
-              not-placeholder-shown:top-2 not-placeholder-shown:text-xs not-placeholder-shown:text-blue-400"
+              peer-focus:top-2 peer-focus:text-xs peer-focus:text-red-400
+              not-placeholder-shown:top-2 not-placeholder-shown:text-xs not-placeholder-shown:text-red-400"
             >
               Email Address
             </label>
@@ -177,15 +178,15 @@ export default function Contact() {
               value={formData.message}
               onChange={handleChange}
               placeholder=" "
-              className="peer w-full px-5 pt-6 pb-3 rounded-xl bg-white/3 border border-white/8 outline-none text-white text-base transition-all duration-300 focus:border-blue-500/50 focus:bg-white/5 resize-none"
+              className="peer w-full px-5 pt-6 pb-3 rounded-xl bg-red-950/10 border border-red-500/10 outline-none text-white text-base transition-all duration-300 focus:border-red-500/40 focus:bg-red-950/20 resize-none"
               required
             />
             <label
               htmlFor="message"
               className="absolute left-5 top-4 text-white/40 text-base pointer-events-none transition-all duration-300 
               peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-white/40
-              peer-focus:top-2 peer-focus:text-xs peer-focus:text-blue-400
-              not-placeholder-shown:top-2 not-placeholder-shown:text-xs not-placeholder-shown:text-blue-400"
+              peer-focus:top-2 peer-focus:text-xs peer-focus:text-red-400
+              not-placeholder-shown:top-2 not-placeholder-shown:text-xs not-placeholder-shown:text-red-400"
             >
               Tell me about your project...
             </label>
@@ -213,9 +214,9 @@ export default function Contact() {
               type="submit"
               disabled={status === "loading"}
               className="w-full sm:w-auto px-8 py-4 rounded-xl font-medium text-white
-              bg-linear-to-r from-blue-600 to-indigo-600
-              hover:from-blue-500 hover:to-indigo-500
-              shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20
+              bg-linear-to-r from-red-600 to-rose-600
+              hover:from-red-500 hover:to-rose-500
+              shadow-lg shadow-red-500/10 hover:shadow-red-500/20
               transition-all duration-300 cursor-pointer disabled:opacity-50
               hover:scale-[1.01] active:scale-[0.99]"
             >

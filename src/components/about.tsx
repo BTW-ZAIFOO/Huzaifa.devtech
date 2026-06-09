@@ -54,8 +54,9 @@ export default function About() {
         aria-hidden="true"
       >
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293708_1px,transparent_1px),linear-gradient(to_bottom,#1f293708_1px,transparent_1px)] bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[300px] h-[300px] sm:w-[550px] sm:h-[550px] lg:w-[800px] lg:h-[800px] bg-blue-500/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-5%] right-[-5%] w-[200px] h-[200px] sm:w-[450px] sm:h-[450px] bg-cyan-500/5 blur-[100px] rounded-full" />
+        {/* Changed background ambient glow to subtle reds and deep roses */}
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[300px] h-[300px] sm:w-[550px] sm:h-[550px] lg:w-[800px] lg:h-[800px] bg-red-500/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-5%] right-[-5%] w-[200px] h-[200px] sm:w-[450px] sm:h-[450px] bg-rose-500/5 blur-[100px] rounded-full" />
       </div>
 
       <div className="relative max-w-6xl mx-auto z-10">
@@ -68,18 +69,18 @@ export default function About() {
             transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
             className="lg:sticky lg:top-24"
           >
-            {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 backdrop-blur-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-              <span className="text-xs text-blue-400 font-medium uppercase tracking-widest">
+            {/* Pill Badge - Swapped to Red styling */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-red-500/20 bg-red-500/5 backdrop-blur-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+              <span className="text-xs text-red-400 font-medium uppercase tracking-widest">
                 About Me
               </span>
             </div>
 
-            {/* Title */}
+            {/* Title - Swapped to a crisp red-to-rose typographic gradient */}
             <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.15] text-white">
               Designing{" "}
-              <span className="bg-linear-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent block sm:inline lg:block">
+              <span className="bg-linear-to-r from-red-400 via-rose-400 to-red-600 bg-clip-text text-transparent block sm:inline lg:block">
                 Immersive User
               </span>{" "}
               Interfaces
@@ -101,7 +102,7 @@ export default function About() {
               </p>
             </div>
 
-            {/* Professional Highlights Tags */}
+            {/* Professional Highlights Tags - Hover updated to Red theme */}
             <div className="mt-6 flex flex-wrap gap-2 max-w-md lg:max-w-none">
               {[
                 "React & Next.js",
@@ -116,7 +117,7 @@ export default function About() {
               ].map((item) => (
                 <span
                   key={item}
-                  className="px-3 py-1 rounded-full border border-neutral-900 bg-neutral-900/30 text-xs text-neutral-400 hover:border-blue-500/30 hover:text-white transition-all duration-200 cursor-default"
+                  className="px-3 py-1 rounded-full border border-neutral-900 bg-neutral-900/30 text-xs text-neutral-400 hover:border-red-500/30 hover:text-white transition-all duration-200 cursor-default"
                 >
                   {item}
                 </span>
@@ -140,17 +141,17 @@ export default function About() {
                 whileHover={{ y: -3 }}
                 className="group relative overflow-hidden rounded-xl border border-neutral-900 bg-neutral-950/40 backdrop-blur-xl p-5 sm:p-6 transition-all duration-200 hover:border-neutral-800/80 hover:bg-neutral-900/20 shadow-xs"
               >
-                {/* Subtle Card Micro-Glow */}
+                {/* Subtle Card Micro-Glow - Swapped from blue to subtle red */}
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                   aria-hidden="true"
                 >
-                  <div className="absolute inset-0 bg-linear-to-r from-blue-500/3 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-r from-red-500/4 via-transparent to-transparent" />
                 </div>
 
                 <div className="relative flex items-start gap-4">
-                  {/* Icon Wrapper */}
-                  <div className="shrink-0 p-2.5 sm:p-3 rounded-lg bg-neutral-900 border border-neutral-800/60 text-blue-400 group-hover:text-cyan-400 group-hover:border-blue-500/20 transition-all duration-200 shadow-xs">
+                  {/* Icon Wrapper - Shifted color matching from blue/cyan to red/rose */}
+                  <div className="shrink-0 p-2.5 sm:p-3 rounded-lg bg-neutral-900 border border-neutral-800/60 text-red-400 group-hover:text-rose-400 group-hover:border-red-500/20 transition-all duration-200 shadow-xs">
                     {item.icon}
                   </div>
 

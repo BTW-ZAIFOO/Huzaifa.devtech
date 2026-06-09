@@ -145,16 +145,16 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative overflow-hidden py-24 sm:py-32 bg-[#030712]"
+      className="relative overflow-hidden py-24 sm:py-32 bg-linear-to-b from-neutral-950 via-red-950/10 to-neutral-950"
     >
-      {/* High-End Ambient Lighting Backdrops */}
+      {/* High-End Ambient Lighting Backdrops elevated for stronger contrast */}
       <div
         className="absolute inset-0 pointer-events-none select-none overflow-hidden"
         aria-hidden="true"
       >
-        <div className="absolute top-[-10%] right-[-10%] h-[600px] w-[600px] rounded-full bg-blue-600/10 blur-[150px]" />
-        <div className="absolute bottom-[5%] left-[-10%] h-[600px] w-[600px] rounded-full bg-purple-600/10 blur-[180px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-cyan-500/5 blur-[200px]" />
+        <div className="absolute top-[-10%] right-[-10%] h-[600px] w-[600px] rounded-full bg-red-600/15 blur-[150px]" />
+        <div className="absolute bottom-[5%] left-[-10%] h-[600px] w-[600px] rounded-full bg-rose-600/10 blur-[180px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-red-500/5 blur-[200px]" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -166,13 +166,13 @@ export default function Experience() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-20"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-3.5 py-1 text-xs font-semibold tracking-widest uppercase text-blue-400 shadow-inner">
+          <span className="inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/5 px-3.5 py-1 text-xs font-semibold tracking-widest uppercase text-red-400 shadow-inner">
             <FaBriefcase className="text-xs" /> Timeline
           </span>
 
           <h2 className="mt-5 text-4xl sm:text-5xl font-black tracking-tight text-white">
             Professional{" "}
-            <span className="bg-linear-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-red-400 via-rose-400 to-red-600 bg-clip-text text-transparent">
               Experience
             </span>
           </h2>
@@ -192,8 +192,8 @@ export default function Experience() {
           viewport={{ once: true, margin: "-100px" }}
           className="relative max-w-4xl mx-auto"
         >
-          {/* Centralized Line For Desktop / Left Aligned For Mobile */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1.5px] bg-linear-to-b from-blue-500 via-indigo-500/40 to-transparent -translate-x-1/2" />
+          {/* Centralized Timeline Axis Line */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1.5px] bg-linear-to-b from-red-500 via-rose-500/40 to-transparent -translate-x-1/2" />
 
           <div className="space-y-16 md:space-y-20">
             {experiences.map((item, index) => {
@@ -207,27 +207,27 @@ export default function Experience() {
                   }`}
                 >
                   {/* Timeline Central Icon Node */}
-                  <div className="absolute left-4 md:left-1/2 top-1.5 flex h-8 w-8 items-center justify-center rounded-full border border-indigo-500/60 bg-[#0d1224] text-indigo-400 text-xs shadow-[0_0_12px_rgba(99,102,241,0.4)] -translate-x-1/2 z-20" />
+                  <div className="absolute left-4 md:left-1/2 top-1.5 flex h-8 w-8 items-center justify-center rounded-full border border-red-500/60 bg-[#0d1224] text-red-400 text-xs shadow-[0_0_12px_rgba(239,68,68,0.4)] -translate-x-1/2 z-20" />
 
-                  {/* Empty space counterpart block for structure stability */}
+                  {/* Empty space counterpart block */}
                   <div className="hidden md:block w-1/2" />
 
-                  {/* Card Block Container */}
+                  {/* Card Block Container updated to blend clean crimson-glass elements */}
                   <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-7">
-                    <div className="group relative overflow-hidden rounded-xl border border-white/5 bg-white/1 backdrop-blur-xl p-6 sm:p-7 transition-all duration-500 hover:border-indigo-500/30 hover:bg-white/2 hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)]">
+                    <div className="group relative overflow-hidden rounded-xl border border-red-500/10 bg-red-950/5 backdrop-blur-xl p-6 sm:p-7 transition-all duration-500 hover:border-red-500/30 hover:bg-red-950/10 hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(0,0,0,0.4)]">
                       {/* Interactive Background Gradient Flare on Hover */}
                       <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 pointer-events-none">
-                        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-indigo-500/5 blur-3xl" />
+                        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-red-500/5 blur-3xl" />
                       </div>
 
                       {/* Header Layout */}
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/5 pb-4.5">
                         <div className="flex items-center gap-3.5">
-                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/5 bg-white/5 text-lg text-blue-400">
+                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-500/10 bg-red-500/5 text-lg text-red-400">
                             {item.icon}
                           </div>
                           <div>
-                            <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors duration-300">
+                            <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-red-400 transition-colors duration-300">
                               {item.role}
                             </h3>
                             <p className="text-sm font-medium text-gray-400 mt-0.5">
@@ -236,6 +236,7 @@ export default function Experience() {
                           </div>
                         </div>
 
+                        {/* Duration Badge */}
                         <div className="w-fit shrink-0 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-0.5 text-xs font-semibold uppercase tracking-wider text-emerald-400">
                           {item.duration}
                         </div>
@@ -250,7 +251,7 @@ export default function Experience() {
                       <div className="mt-5 space-y-3">
                         {item.achievements.map((achievement, i) => (
                           <div key={i} className="flex items-start gap-3">
-                            <FaCheckCircle className="mt-1 text-xs text-indigo-400/80 shrink-0" />
+                            <FaCheckCircle className="mt-1 text-xs text-rose-400/80 shrink-0" />
                             <span className="text-sm text-gray-300/90 leading-relaxed">
                               {achievement}
                             </span>
@@ -263,7 +264,7 @@ export default function Experience() {
                         {item.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-md border border-white/6 bg-white/2 px-2.5 py-1 text-xs font-medium text-gray-400 transition-colors duration-300 hover:border-blue-500/20 hover:text-blue-300"
+                            className="rounded-md border border-red-500/10 bg-red-950/10 px-2.5 py-1 text-xs font-medium text-gray-400 transition-colors duration-300 hover:border-red-500/30 hover:text-red-300"
                           >
                             {tag}
                           </span>

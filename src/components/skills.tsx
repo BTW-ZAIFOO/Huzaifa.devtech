@@ -6,7 +6,6 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
-  animate,
 } from "framer-motion";
 import {
   FaReact,
@@ -31,7 +30,7 @@ import {
   SiKotlin,
 } from "react-icons/si";
 
-// 18 Professional Full-Stack + Flutter Mobile Skills
+// 18 Professional Full-Stack + Flutter Mobile Skills - Retaining original brand color hashes
 const skills = [
   // Web & UI Tier
   { name: "React", icon: FaReact, color: "#61DBFB", tier: "outer" },
@@ -79,12 +78,11 @@ export default function Skills() {
   const [activeInnerNode, setActiveInnerNode] = useState<number | null>(null);
 
   const rotation = useMotionValue(0);
-  const currentSpeedRef = useRef(0.22); // Target speed
+  const currentSpeedRef = useRef(0.22);
   const rotationAnimRef = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const particleIdCounter = useRef(0);
 
-  // Sync size configurations dynamically across viewports
   useEffect(() => {
     if (!containerRef.current) return;
     const updateSize = () => {
@@ -100,12 +98,9 @@ export default function Skills() {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  // Frame loop for global system rotation state
-  // On hover, we smoothly animate the speed down, not stop.
   useEffect(() => {
     const updateRotation = () => {
-      const targetSpeed = isHovered ? 0.04 : 0.22; // 80% slower on hover
-      // Smoothly interpolate speed
+      const targetSpeed = isHovered ? 0.04 : 0.22;
       currentSpeedRef.current =
         currentSpeedRef.current + (targetSpeed - currentSpeedRef.current) * 0.1;
       rotation.set(rotation.get() + currentSpeedRef.current);
@@ -118,7 +113,6 @@ export default function Skills() {
     };
   }, [isHovered, rotation]);
 
-  // Handle particle lifecycle and decay speeds
   useEffect(() => {
     if (particles.length === 0) return;
     const interval = setInterval(() => {
@@ -130,7 +124,7 @@ export default function Skills() {
               ...p,
               x: p.x + Math.cos(rad) * p.speed,
               y: p.y + Math.sin(rad) * p.speed,
-              speed: p.speed * 0.92, // Slower decay for longer life
+              speed: p.speed * 0.92,
             };
           })
           .filter((p) => p.speed > 0.3),
@@ -156,14 +150,13 @@ export default function Skills() {
         y: startY,
         color,
         angle: Math.random() * 360,
-        speed: Math.random() * 8 + 4, // Higher initial speed
+        speed: Math.random() * 8 + 4,
       };
     });
 
     setParticles((prev) => [...prev, ...newParticles]);
   };
 
-  // Group components together inside matching spatial tracks safely
   const outerSkills = skills.filter((s) => s.tier === "outer");
   const middleSkills = skills.filter((s) => s.tier === "middle");
   const innerSkills = skills.filter((s) => s.tier === "inner");
@@ -171,7 +164,6 @@ export default function Skills() {
   const centerX = dimensions.width / 2;
   const centerY = dimensions.height / 2;
 
-  // Track settings (normalized ratio based on container width)
   const tracks = {
     outer: dimensions.width < 500 ? 0.44 : 0.45,
     middle: dimensions.width < 500 ? 0.31 : 0.32,
@@ -183,10 +175,10 @@ export default function Skills() {
       id="skills"
       className="relative py-28 px-4 overflow-hidden md:px-10 max-w-7xl mx-auto flex flex-col items-center justify-center select-none"
     >
-      {/* Background Lighting System */}
+      {/* Background Deep Crimson/Ruby Ambient Setup */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[750px] h-[350px] sm:h-[750px] bg-blue-500/10 blur-[140px] rounded-full" />
-        <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-cyan-500/5 blur-[120px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[750px] h-[350px] sm:h-[750px] bg-red-600/10 blur-[140px] rounded-full" />
+        <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-rose-600/5 blur-[120px] rounded-full" />
       </div>
 
       {/* Header Info Block */}
@@ -200,7 +192,7 @@ export default function Skills() {
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
           Technical Expertise
         </h2>
-        <p className="mt-4 text-sm md:text-base text-white/40 max-w-xl mx-auto leading-relaxed">
+        <p className="mt-4 text-sm md:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed">
           An enterprise-grade Full-Stack & Cross-Platform Mobile architecture
           optimized for performance, scale, and clean interfaces.
         </p>
@@ -213,13 +205,13 @@ export default function Skills() {
         onMouseLeave={() => setIsHovered(false)}
         className="relative w-full aspect-square max-w-[350px] sm:max-w-[580px] md:max-w-[700px] lg:max-w-[800px] flex items-center justify-center rounded-full"
       >
-        {/* Core Center Hub */}
+        {/* Central Crimson Hub Structure */}
         <motion.div
           animate={{ scale: isHovered ? 1.05 : 1 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="absolute w-28 h-28 sm:w-40 sm:h-40 border-2 border-white/10 bg-black/70 backdrop-blur-3xl rounded-full flex flex-col items-center justify-center z-50 shadow-2xl shadow-blue-950/40 text-center px-2 group"
+          className="absolute w-28 h-28 sm:w-40 sm:h-40 border border-red-500/15 bg-neutral-950/80 backdrop-blur-3xl rounded-full flex flex-col items-center justify-center z-50 shadow-2xl shadow-red-950/40 text-center px-2 group"
         >
-          <span className="text-[11px] font-extrabold tracking-widest text-blue-400/80 uppercase">
+          <span className="text-[11px] font-extrabold tracking-widest text-red-400/80 uppercase">
             Expertise
           </span>
           <span className="text-sm sm:text-base font-bold text-white mt-1 leading-tight tracking-wide">
@@ -227,7 +219,7 @@ export default function Skills() {
             <br />
             Developer
           </span>
-          <div className="absolute inset-0 rounded-full bg-blue-500/10 blur-xl group-hover:opacity-100 opacity-50 transition-opacity duration-300" />
+          <div className="absolute inset-0 rounded-full bg-red-500/10 blur-xl group-hover:opacity-100 opacity-50 transition-opacity duration-300" />
         </motion.div>
 
         {/* Live Spark Simulation Layer */}
@@ -246,21 +238,20 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Visual Background Guide Rings & Data lines */}
-        <div className="absolute border border-dashed border-white/4 rounded-full w-[90%] h-[90%] pointer-events-none animate-[spin_180s_linear_infinite]" />
-        <div className="absolute border border-dashed border-white/3 rounded-full w-[64%] h-[64%] pointer-events-none animate-[spin_120s_linear_infinite_reverse]" />
-        <div className="absolute border border-dashed border-white/2 rounded-full w-[38%] h-[38%] pointer-events-none" />
+        {/* Visual Background Guide Rings using micro Crimson lines */}
+        <div className="absolute border border-dashed border-red-500/5 rounded-full w-[90%] h-[90%] pointer-events-none animate-[spin_180s_linear_infinite]" />
+        <div className="absolute border border-dashed border-red-500/5 rounded-full w-[64%] h-[64%] pointer-events-none animate-[spin_120s_linear_infinite_reverse]" />
+        <div className="absolute border border-dashed border-red-500/5 rounded-full w-[38%] h-[38%] pointer-events-none" />
 
-        {/* Data lines connecting central hub to inner nodes */}
+        {/* Data lines updated to blend with deep red system track accents */}
         {innerSkills.map((skill, index) => {
           const totalAngle = (index / innerSkills.length) * 360;
-          const rotationAngle = 0; // Handled by Node component
-          const opacity = activeInnerNode === index ? 0.3 : 0.08;
+          const opacity = activeInnerNode === index ? 0.25 : 0.04;
 
           return (
             <motion.div
               key={`line-${skill.name}`}
-              className="absolute top-0 left-0 h-0.5 border-t border-dashed border-white origin-left pointer-events-none z-20 transition-opacity duration-300"
+              className="absolute top-0 left-0 h-0.5 border-t border-dashed border-red-500 origin-left pointer-events-none z-20 transition-opacity duration-300"
               style={{
                 width:
                   dimensions.width * tracks.inner -
@@ -268,7 +259,7 @@ export default function Skills() {
                 top: centerY,
                 left: centerX,
                 opacity: opacity,
-                borderColor: skill.color,
+                borderColor: "rgba(239, 68, 68, 0.4)", 
                 rotate: `${totalAngle}deg`,
               }}
             />
@@ -357,7 +348,6 @@ function OrbitalNode({
 
   const Icon = skill.icon;
 
-  // New magnetic mouse effect values
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springConfig = { stiffness: 400, damping: 25 };
@@ -396,7 +386,7 @@ function OrbitalNode({
       const totalAngle = baseAngle + currentRotation;
       const radians = (totalAngle * Math.PI) / 180;
 
-      const nodeSize = window.innerWidth < 640 ? 48 : 56; // 12 or 14 rem
+      const nodeSize = window.innerWidth < 640 ? 48 : 56;
       const nodeOffset = nodeSize / 2;
 
       setCoords({
@@ -412,22 +402,22 @@ function OrbitalNode({
 
   if (centerX === 0) return null;
 
-  // Tier-specific styles for depth
+  // Dark ruby/crimson container variants replacing previous absolute white borders
   const tierStyles = {
     inner: {
-      bgColor: "bg-black/90",
+      bgColor: "bg-neutral-950/90",
       blur: "backdrop-blur-sm",
-      borderColor: "border-white/20",
+      borderColor: "border-red-500/25",
     },
     middle: {
-      bgColor: "bg-black/75",
+      bgColor: "bg-neutral-950/80",
       blur: "backdrop-blur-md",
-      borderColor: "border-white/10",
+      borderColor: "border-red-950/40",
     },
     outer: {
-      bgColor: "bg-black/60",
+      bgColor: "bg-neutral-950/60",
       blur: "backdrop-blur-xl",
-      borderColor: "border-white/5",
+      borderColor: "border-red-950/20",
     },
   }[tier];
 
@@ -446,17 +436,16 @@ function OrbitalNode({
       {isHovered && (
         <motion.div
           className="absolute inset-0 rounded-xl blur-xl"
-          style={{ backgroundColor: skill.color, opacity: 0.25 }}
+          style={{ backgroundColor: skill.color, opacity: 0.2 }}
           animate={{ scale: [1, 1.3, 1] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         />
       )}
 
-      {/* The visible card component */}
+      {/* The visible shell component configured to Crimson guidelines */}
       <div
-        className={`w-full h-full rounded-xl border ${tierStyles.borderColor} ${tierStyles.bgColor} ${tierStyles.blur} flex items-center justify-center relative transition-colors duration-300 group-hover:border-white/40 group-hover:shadow-[0_0_20px_${skill.color}30]`}
+        className={`w-full h-full rounded-xl border ${tierStyles.borderColor} ${tierStyles.bgColor} ${tierStyles.blur} flex items-center justify-center relative transition-colors duration-300 group-hover:border-red-500/40 group-hover:shadow-[0_0_20px_${skill.color}25]`}
       >
-        {/* Glow directly behind the icon */}
         <div
           className="absolute w-4 h-4 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
           style={{ backgroundColor: skill.color }}
@@ -475,7 +464,7 @@ function OrbitalNode({
         </motion.div>
 
         {/* Aesthetic Tooltip */}
-        <div className="absolute -bottom-8 bg-black/90 border border-white/15 text-[10px] text-white font-semibold px-2.5 py-1 rounded opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 pointer-events-none transition-all duration-300 tracking-wide whitespace-nowrap shadow-xl z-50">
+        <div className="absolute -bottom-8 bg-neutral-950/95 border border-red-950/50 text-[10px] text-white font-semibold px-2.5 py-1 rounded opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 pointer-events-none transition-all duration-300 tracking-wide whitespace-nowrap shadow-xl z-50">
           {skill.name}
         </div>
       </div>

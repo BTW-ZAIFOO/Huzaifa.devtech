@@ -8,8 +8,11 @@ export default function Loader({ finishLoading }: { finishLoading: () => void })
   const [input, setInput] = useState("");
   const [progress, setProgress] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
-  const [isDone, setIsDone] = useState(false);
   const [currentFile, setCurrentFile] = useState("");
+  
+  // System State Management: "compiling" | "welcome" | "exiting"
+  const [loaderStage, setLoaderStage] = useState<"compiling" | "welcome" | "exiting">("compiling");
+  const [welcomeText, setWelcomeText] = useState("");
 
   const [successSteps, setSuccessSteps] = useState({
     env: false,
@@ -18,6 +21,7 @@ export default function Loader({ finishLoading }: { finishLoading: () => void })
   });
 
   const command = "npm run dev --turbo";
+  const welcomeMessage = "Welcome to Huzaifa.devtech Portfolio";
 
   const asciiLogo = [
     "  _  _ _  _ ___  _ ____ _ ____ ___ ",
@@ -54,7 +58,9 @@ export default function Loader({ finishLoading }: { finishLoading: () => void })
     let logTimeout: NodeJS.Timeout;
     let progressInterval: NodeJS.Timeout;
     let fileInterval: NodeJS.Timeout;
+    let welcomeInterval: NodeJS.Timeout;
 
+    // Stage 1: Typing Command
     typingInterval = setInterval(() => {
       if (charIndex < command.length) {
         currentInput += command[charIndex];
@@ -62,7 +68,6 @@ export default function Loader({ finishLoading }: { finishLoading: () => void })
         charIndex++;
       } else {
         clearInterval(typingInterval);
-        
         setTimeout(() => {
           setLogs(asciiLogo);
           setTimeout(() => triggerLogs(0), 500);
@@ -70,17 +75,14 @@ export default function Loader({ finishLoading }: { finishLoading: () => void })
       }
     }, 120);
 
+    // Stage 2: Log Output Stream
     const triggerLogs = (index: number) => {
       if (index < bootSequence.length) {
         const activeLine = bootSequence[index];
         setLogs((prev) => [...prev, activeLine]);
 
-        if (activeLine.includes("security parameters")) {
-          setSuccessSteps((prev) => ({ ...prev, env: true }));
-        }
-        if (activeLine.includes("rendering clusters")) {
-          setSuccessSteps((prev) => ({ ...prev, components: true }));
-        }
+        if (activeLine.includes("security parameters")) setSuccessSteps((prev) => ({ ...prev, env: true }));
+        if (activeLine.includes("rendering clusters")) setSuccessSteps((prev) => ({ ...prev, components: true }));
 
         const delay = activeLine.startsWith("✓") ? 300 : 500;
         logTimeout = setTimeout(() => triggerLogs(index + 1), delay);
@@ -98,25 +100,44 @@ export default function Loader({ finishLoading }: { finishLoading: () => void })
           if (progressVal < 100) {
             progressVal += Math.floor(Math.random() * 5) + 3;
             setProgress(Math.min(progressVal, 100));
-
-            if (progressVal >= 60) {
-              setSuccessSteps((prev) => ({ ...prev, assets: true }));
-            }
+            if (progressVal >= 60) setSuccessSteps((prev) => ({ ...prev, assets: true }));
           } else {
             clearInterval(progressInterval);
             clearInterval(fileInterval);
-            setCurrentFile("Compilation safe. Launching portfolio view...");
             
+            // Switch current view container to the custom welcome presentation sub-loader
             setTimeout(() => {
-              setIsDone(true);
-              setTimeout(() => {
-                finishLoading();
-                document.body.style.overflow = "unset";
-              }, 700);
-            }, 800);
+              setLoaderStage("welcome");
+              triggerWelcomeTyping();
+            }, 600);
           }
         }, 110);
       }
+    };
+
+    // Stage 3: Secondary Welcome Text Sequence
+    const triggerWelcomeTyping = () => {
+      let welcomeIndex = 0;
+      let currentWelcome = "";
+      
+      welcomeInterval = setInterval(() => {
+        if (welcomeIndex < welcomeMessage.length) {
+          currentWelcome += welcomeMessage[welcomeIndex];
+          setWelcomeText(currentWelcome);
+          welcomeIndex++;
+        } else {
+          clearInterval(welcomeInterval);
+          
+          // Smooth Master Dismissal After Reading Timeout Delay Ends
+          setTimeout(() => {
+            setLoaderStage("exiting");
+            setTimeout(() => {
+              finishLoading();
+              document.body.style.overflow = "unset";
+            }, 800);
+          }, 1800);
+        }
+      }, 60);
     };
 
     return () => {
@@ -124,36 +145,39 @@ export default function Loader({ finishLoading }: { finishLoading: () => void })
       clearTimeout(logTimeout);
       clearInterval(progressInterval);
       clearInterval(fileInterval);
+      clearInterval(welcomeInterval);
       document.body.style.overflow = "unset";
     };
   }, [finishLoading]);
 
   return (
     <AnimatePresence>
-      {!isDone && (
+      {loaderStage !== "exiting" && (
         <motion.div
-          className="fixed inset-0 z-99999 flex items-center justify-center bg-[#03050c] p-4 select-none font-mono text-[11px] sm:text-xs md:text-sm"
+          /* Shifted background layout from blue-black to matching dark ruby state */
+          className="fixed inset-0 z-99999 flex items-center justify-center bg-[#0a0304] p-4 select-none font-mono text-[11px] sm:text-xs md:text-sm"
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0,
-            scale: 1.05,
-            filter: "blur(10px)",
+            scale: 1.04,
+            filter: "blur(12px)",
             transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
           }}
         >
-          {/* Aesthetic High-End Backlighting/Mesh Gradients */}
-          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-linear-to-br from-violet-600/15 to-transparent rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-linear-to-tl from-indigo-600/15 to-transparent rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-purple-500/3 rounded-full blur-[100px] pointer-events-none" />
+          {/* Backlighting/Mesh Gradients migrated to Premium Crimson/Rose variables */}
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-linear-to-br from-red-600/15 to-transparent rounded-full blur-[120px]" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-linear-to-tl from-rose-600/15 to-transparent rounded-full blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-red-500/5 rounded-full blur-[100px]" />
 
-          {/* Master Cyberpunk Glassmorphic Panel Container */}
+          {/* Master Glassmorphic Box Panel - Swapped blue tint for clear dark ruby blend */}
           <motion.div 
+            layout
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full max-w-2xl bg-[#070b19]/40 backdrop-blur-xl border border-white/6 rounded-2xl shadow-[0_30px_100px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] overflow-hidden flex flex-col"
+            className="w-full max-w-2xl bg-[#120507]/40 backdrop-blur-xl border border-white/6 rounded-2xl shadow-[0_30px_100px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] overflow-hidden flex flex-col"
           >
-            {/* Top Navigation Console Window Bar */}
+            {/* Top Windows Navigation Frame */}
             <div className="flex items-center justify-between px-5 py-3.5 bg-white/2 border-b border-white/5">
               <div className="flex items-center space-x-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-rose-500/40 border border-rose-500/20" />
@@ -161,136 +185,140 @@ export default function Loader({ finishLoading }: { finishLoading: () => void })
                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/40 border border-emerald-500/20" />
               </div>
               <span className="text-[9px] uppercase tracking-[0.3em] text-white/30 font-bold bg-white/4 px-2.5 py-0.5 rounded-full border border-white/3">
-                System Initialization
+                {loaderStage === "compiling" ? "System Initialization" : "Authorization Success"}
               </span>
-              <div className="hidden sm:flex items-center space-x-2 text-[10px] text-emerald-400/60 tracking-wider">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
-                <span className="font-semibold text-[9px] uppercase">Online</span>
+              <div className="hidden sm:flex items-center space-x-2 text-[10px]">
+                <span className={`w-1.5 h-1.5 rounded-full shadow-[0_0_8px_#ef4444] ${loaderStage === 'welcome' ? 'bg-red-400' : 'bg-red-500 animate-pulse'}`} />
+                <span className="text-[9px] uppercase text-white/40 tracking-wider">
+                  {loaderStage === "compiling" ? "Online" : "Secure"}
+                </span>
               </div>
             </div>
 
-            {/* Terminal Screen Interface Layout */}
-            <div className="p-6 min-h-[460px] max-h-[560px] overflow-y-auto flex flex-col justify-start text-left relative">
+            {/* Core Terminal Switch Monitor Workspace */}
+            <div className="p-6 min-h-[440px] max-h-[540px] flex flex-col relative transition-all duration-500 ease-in-out">
               
-              {/* Command Input Sequence Layout */}
-              <div className="flex items-center text-white/80 mb-5 text-[12px] sm:text-xs">
-                <span className="bg-linear-to-r from-violet-400 to-indigo-400 text-transparent bg-clip-text font-bold mr-2">guest@huzaifa.devtech</span>
-                <span className="text-white/20 mr-2">❯</span>
-                <span className="text-white font-medium tracking-wide">{input}</span>
-                
-                {logs.length === 0 && (
-                  <motion.span 
-                    animate={{ opacity: [1, 1, 0, 0] }}
-                    transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                    className="ml-1.5 w-[6px] h-[13px] bg-violet-400 shadow-[0_0_8px_rgba(139,92,246,1)] inline-block"
-                  />
-                )}
-              </div>
-
-              {/* Streaming Output Blocks */}
-              <div className="space-y-[3px] font-mono whitespace-pre mb-6 grow">
-                {logs.map((log, index) => {
-                  let colorClass = "text-white/40 font-light";
+              <AnimatePresence mode="wait">
+                {loaderStage === "compiling" ? (
                   
-                  if (index < asciiLogo.length && !log.includes("==")) {
-                    return (
-                      <div
-                        key={index}
-                        className="text-transparent bg-clip-text bg-linear-to-r from-violet-400 via-fuchsia-400 to-indigo-400 font-extrabold tracking-tight drop-shadow-[0_0_15px_rgba(139,92,246,0.1)]"
-                      >
-                        {log}
-                      </div>
-                    );
-                  } else if (log.startsWith("✓")) {
-                    colorClass = "text-emerald-400/80 font-medium drop-shadow-[0_0_6px_rgba(52,211,153,0.1)]";
-                  } else if (log.startsWith("►")) {
-                    colorClass = "text-indigo-400 font-semibold";
-                  }
-
-                  return (
-                    <div key={index} className={`${colorClass} text-[11px] sm:text-xs`}>
-                      {log}
+                  /* Stage A: Main Compilation Viewport */
+                  <motion.div
+                    key="compiling-stage"
+                    initial={{ opacity: 1 }}
+                    exit={{ opacity: 0, y: -15, filter: "blur(4px)" }}
+                    transition={{ duration: 0.4 }}
+                    className="flex flex-col grow text-left"
+                  >
+                    {/* Command Line Input row layout */}
+                    <div className="flex items-center text-white/80 mb-5 text-[12px] sm:text-xs">
+                      <span className="bg-linear-to-r from-red-400 to-rose-400 text-transparent bg-clip-text font-bold mr-2">guest@huzaifa.devtech</span>
+                      <span className="text-white/20 mr-2">❯</span>
+                      <span className="text-white font-medium tracking-wide">{input}</span>
                     </div>
-                  );
-                })}
-              </div>
 
-              {/* Step-by-Step Aesthetic Success Popups */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5 border-t border-b border-white/4 py-4 bg-white/1 px-4 rounded-xl backdrop-blur-sm">
-                
-                {/* Step 1 Component Badge */}
-                <div className={`flex items-center justify-between px-3 py-2 rounded-lg transition-all duration-300 ${successSteps.env ? 'bg-emerald-500/4 border Richmond border-emerald-500/20' : 'bg-white/1 border border-white/3'}`}>
-                  <span className={`text-[9px] tracking-widest uppercase transition-colors duration-300 ${successSteps.env ? "text-emerald-400 font-semibold" : "text-white/20"}`}>
-                    1. Env Safe
-                  </span>
-                  <AnimatePresence mode="wait">
-                    {successSteps.env ? (
-                      <motion.span key="check" initial={{ scale: 0, rotate: -20 }} animate={{ scale: 1, rotate: 0 }} className="text-emerald-400 font-bold text-xs">✓</motion.span>
-                    ) : (
-                      <motion.span key="dot" className="w-1.5 h-1.5 rounded-full bg-violet-500/40 animate-ping" />
+                    {/* Sequential Log Terminal List */}
+                    <div className="space-y-[3px] font-mono whitespace-pre mb-6 grow">
+                      {logs.map((log, index) => {
+                        let colorClass = "text-white/40 font-light";
+                        if (index < asciiLogo.length && !log.includes("==")) {
+                          return (
+                            <div key={index} className="text-transparent bg-clip-text bg-linear-to-r from-red-400 via-rose-400 to-red-500 font-extrabold tracking-tight drop-shadow-[0_0_15px_rgba(239,68,68,0.1)]">
+                              {log}
+                            </div>
+                          );
+                        } else if (log.startsWith("✓")) {
+                          colorClass = "text-emerald-400/80 font-medium drop-shadow-[0_0_6px_rgba(52,211,153,0.1)]";
+                        } else if (log.startsWith("►")) {
+                          colorClass = "text-rose-400 font-semibold";
+                        }
+                        return <div key={index} className={`${colorClass} text-[11px] sm:text-xs`}>{log}</div>;
+                      })}
+                    </div>
+
+                    {/* Step Checklist Section */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5 border-t border-b border-white/4 py-4 bg-white/1 px-4 rounded-xl backdrop-blur-sm">
+                      {["Env Safe", "Modules Live", "UI Rendered"].map((step, idx) => {
+                        const states = [successSteps.env, successSteps.components, successSteps.assets];
+                        const isActive = states[idx];
+                        return (
+                          <div key={idx} className={`flex items-center justify-between px-3 py-2 rounded-lg border transition-all duration-300 ${isActive ? 'bg-emerald-500/4 border-emerald-500/20' : 'bg-white/1 border-white/3'}`}>
+                            <span className={`text-[9px] tracking-widest uppercase ${isActive ? "text-emerald-400 font-semibold" : "text-white/20"}`}>
+                              {idx + 1}. {step}
+                            </span>
+                            {isActive ? <span className="text-emerald-400 font-bold text-xs">✓</span> : <span className="w-1.5 h-1.5 rounded-full bg-white/10" />}
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Progress Slider Stream Panel */}
+                    {showProgress && (
+                      <div className="flex flex-col gap-2 font-mono">
+                        <div className="flex justify-between items-center text-white/30 text-[9px] uppercase tracking-[0.15em]">
+                          <span>Synchronizing UI Viewport</span>
+                          <span className="text-red-400 font-extrabold bg-red-500/10 px-2 py-0.5 rounded-md border border-red-500/20">{progress}%</span>
+                        </div>
+                        <div className="w-full h-[3px] bg-white/3 rounded-full overflow-hidden border border-white/2 p-px">
+                          <div className="h-full bg-linear-to-r from-red-500 via-rose-500 to-crimson-600 rounded-full" style={{ width: `${progress}%` }} />
+                        </div>
+                        <div className="text-[10px] text-white/20 truncate font-light flex items-center mt-1">
+                          <span className="text-rose-400/40 font-bold tracking-widest text-[9px] uppercase mr-2 bg-white/2 px-1.5 py-0.5 rounded border border-white/2">Pipeline</span>
+                          <span className="italic truncate">{currentFile}</span>
+                        </div>
+                      </div>
                     )}
-                  </AnimatePresence>
-                </div>
+                  </motion.div>
+                ) : (
+                  
+                  /* Stage B: Secondary Premium Welcome Dashboard Loader Viewport */
+                  <motion.div
+                    key="welcome-stage"
+                    initial={{ opacity: 0, scale: 0.97, y: 15, filter: "blur(4px)" }}
+                    animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex flex-col grow items-center justify-center text-center relative py-12 px-4"
+                  >
+                    {/* Animated Cybernetic Outer Radar Rings adjusted to Crimson */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: [0, 0.15, 0], scale: [0.8, 1.4, 1.6] }} transition={{ repeat: Infinity, duration: 3, ease: "linear" }} className="w-64 h-64 border border-red-500/10 rounded-full absolute" />
+                      <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: [0, 0.1, 0], scale: [0.9, 1.3, 1.5] }} transition={{ repeat: Infinity, duration: 3, delay: 1.5, ease: "linear" }} className="w-80 h-80 border border-rose-500/5 rounded-full absolute" />
+                    </div>
 
-                {/* Step 2 Component Badge */}
-                <div className={`flex items-center justify-between px-3 py-2 rounded-lg transition-all duration-300 ${successSteps.components ? 'bg-emerald-500/4 border border-emerald-500/20' : 'bg-white/1 border border-white/3'}`}>
-                  <span className={`text-[9px] tracking-widest uppercase transition-colors duration-300 ${successSteps.components ? "text-emerald-400 font-semibold" : "text-white/20"}`}>
-                    2. Modules Live
-                  </span>
-                  <AnimatePresence mode="wait">
-                    {successSteps.components ? (
-                      <motion.span key="check" initial={{ scale: 0, rotate: -20 }} animate={{ scale: 1, rotate: 0 }} className="text-emerald-400 font-bold text-xs">✓</motion.span>
-                    ) : (
-                      <motion.span key="dot" className="w-1.5 h-1.5 rounded-full bg-white/10" />
-                    )}
-                  </AnimatePresence>
-                </div>
+                    {/* Premium Pulsing Decorative Branding Icon Token */}
+                    <motion.div
+                      animate={{ 
+                        boxShadow: ["0 0 20px rgba(220,38,38,0.1)", "0 0 40px rgba(220,38,38,0.25)", "0 0 20px rgba(220,38,38,0.1)"]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="w-14 h-14 rounded-2xl bg-linear-to-tr from-red-600 to-rose-600 flex items-center justify-center border border-white/20 mb-8 z-30"
+                    >
+                      <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                      </svg>
+                    </motion.div>
 
-                {/* Step 3 Component Badge */}
-                <div className={`flex items-center justify-between px-3 py-2 rounded-lg transition-all duration-300 ${successSteps.assets ? 'bg-emerald-500/4 border border-emerald-500/20' : 'bg-white/1 border border-white/3'}`}>
-                  <span className={`text-[9px] tracking-widest uppercase transition-colors duration-300 ${successSteps.assets ? "text-emerald-400 font-semibold" : "text-white/20"}`}>
-                    3. UI Rendered
-                  </span>
-                  <AnimatePresence mode="wait">
-                    {successSteps.assets ? (
-                      <motion.span key="check" initial={{ scale: 0, rotate: -20 }} animate={{ scale: 1, rotate: 0 }} className="text-emerald-400 font-bold text-xs">✓</motion.span>
-                    ) : (
-                      <motion.span key="dot" className="w-1.5 h-1.5 rounded-full bg-white/10" />
-                    )}
-                  </AnimatePresence>
-                </div>
-              </div>
+                    {/* Dynamic Typed Main Header Title */}
+                    <h2 className="text-white text-base sm:text-lg md:text-xl font-bold tracking-wide min-h-[28px] max-w-md z-30 leading-relaxed">
+                      {welcomeText}
+                      <motion.span 
+                        animate={{ opacity: [1, 1, 0, 0] }}
+                        transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                        className="inline-block w-1.5 h-4 ml-1 bg-rose-400 align-middle"
+                      />
+                    </h2>
 
-              {/* Aesthetic Progress Bar & Pipeline Tracker */}
-              {showProgress && (
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="flex flex-col gap-2 font-mono"
-                >
-                  <div className="flex justify-between items-center text-white/30 text-[9px] uppercase tracking-[0.15em]">
-                    <span className="font-medium">Synchronizing UI Viewport</span>
-                    <span className="text-violet-400 font-extrabold font-mono bg-violet-500/10 px-2 py-0.5 rounded-md border border-violet-500/20">{progress}%</span>
-                  </div>
-
-                  {/* Modern Ultra-Thin Sleek Glowing Progress Bar */}
-                  <div className="w-full h-[3px] bg-white/3 rounded-full overflow-hidden border border-white/2 p-px">
-                    <motion.div 
-                      className="h-full bg-linear-to-r from-violet-500 via-fuchsia-500 to-indigo-500 rounded-full shadow-[0_0_12px_rgba(139,92,246,0.6)]"
-                      initial={{ width: "0%" }}
-                      animate={{ width: `${progress}%` }}
-                      transition={{ ease: "easeInOut" }}
-                    />
-                  </div>
-
-                  {/* Minimalist Sub-file Pipeline Tracker Line */}
-                  <div className="text-[10px] text-white/20 truncate font-light flex items-center mt-1">
-                    <span className="text-indigo-400/40 font-bold tracking-widest text-[9px] uppercase mr-2 bg-white/2 px-1.5 py-0.5 rounded border border-white/2">Pipeline</span>
-                    <span className="italic truncate">{currentFile}</span>
-                  </div>
-                </motion.div>
-              )}
+                    {/* Minor Subtext Description Label Badge */}
+                    <motion.p 
+                      initial={{ opacity: 0 }} 
+                      animate={{ opacity: 1 }} 
+                      transition={{ delay: 0.4 }}
+                      className="text-white/30 text-[10px] uppercase tracking-[0.3em] mt-3 z-30"
+                    >
+                      Establishing Direct Encrypted Connection
+                    </motion.p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
             </div>
           </motion.div>

@@ -2,14 +2,14 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter, FaArrowRight, FaEnvelope, FaWhatsapp } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaArrowRight, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
 const techStack = ["React", "Next.js", "TypeScript", "TailwindCSS", "Node.js"];
 
 const stats = [
-  { value: "50+", label: "Projects Delivered" },
-  { value: "4+", label: "Years Experience" },
-  { value: "20+", label: "Happy Clients" },
+  { value: "10", label: "Projects Delivered" },
+  { value: "3+", label: "Years Experience" },
+  { value: "10+", label: "Happy Clients" },
 ];
 
 interface HeroProps {
@@ -31,15 +31,15 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden flex items-center bg-[#030014] pt-28 pb-16 md:pt-36 md:pb-24">
-      {/* Ambient Cosmic Background */}
+    <section className="relative min-h-screen overflow-hidden flex items-center bg-linear-to-b from-neutral-950 via-red-950/10 to-neutral-950 border-b border-red-950/10 pt-28 pb-16 md:pt-36 md:pb-24">
+      {/* Ambient Crimson Background Backdrops */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-blue-600/15 blur-[160px] rounded-full animate-pulse duration-6000" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-purple-600/15 blur-[160px] rounded-full animate-pulse duration-8000" />
+        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-red-600/10 blur-[160px] rounded-full animate-pulse duration-6000" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-rose-600/10 blur-[160px] rounded-full animate-pulse duration-8000" />
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.02]"
           style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(rgba(239,68,68,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(239,68,68,0.1) 1px, transparent 1px)`,
             backgroundSize: "40px 40px",
           }}
         />
@@ -49,18 +49,18 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* LEFT CONTENT BLOCK */}
           <div className="lg:col-span-7 text-center lg:text-left order-2 lg:order-1">
-            {/* Tagline Badge */}
+            {/* Tagline Badge stylized in red */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs sm:text-sm font-medium backdrop-blur-md shadow-inner shadow-blue-500/5 tracking-wide">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs sm:text-sm font-medium backdrop-blur-md shadow-inner shadow-red-500/5 tracking-wide">
                 👋 Welcome To My Portfolio
               </span>
             </motion.div>
 
-            {/* Main Headline */}
+            {/* Main Headline with Red to Rose Typography Gradient */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
               className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight leading-[1.15]"
             >
               Huzaifa
-              <span className="block mt-1 bg-linear-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent filter drop-shadow-sm">
+              <span className="block mt-1 bg-linear-to-r from-red-400 via-rose-400 to-red-600 bg-clip-text text-transparent filter drop-shadow-sm">
                 Khan
               </span>
             </motion.h1>
@@ -82,12 +82,12 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
             >
               <p className="text-base sm:text-lg text-slate-300 font-medium tracking-normal">
                 Software Engineer{" "}
-                <span className="text-blue-500/80 mx-1">•</span> Full Stack
-                Developer <span className="text-blue-500/80 mx-1">•</span> <span> Mobile App Developer</span>
+                <span className="text-red-500/60 mx-1">•</span> Full Stack
+                Developer <span className="text-red-500/60 mx-1">•</span> <span> Mobile App Developer</span>
               </p>
             </motion.div>
 
-            {/* Availability Indicator */}
+            {/* Availability Indicator remains green for functional status consistency */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -113,7 +113,7 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
               Building scalable web and mobile applications, SaaS platforms, enterprise software, AI-powered products, and digital experiences with modern technologies and exceptional user experiences.
             </motion.p>
 
-            {/* Action Buttons */}
+            {/* Action Buttons refactored to Crimson theme */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -122,7 +122,7 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
             >
               <button 
                 onClick={() => handleScroll(projectsSectionId)}
-                className="group flex items-center justify-center gap-2 rounded-xl px-6.5 py-3.5 text-sm font-semibold bg-linear-to-r from-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                className="group flex items-center justify-center gap-2 rounded-xl px-6.5 py-3.5 text-sm font-semibold bg-linear-to-r from-red-600 via-rose-500 to-red-600 text-white shadow-lg shadow-red-600/10 hover:shadow-red-600/30 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
               >
                 View Projects
                 <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
@@ -130,13 +130,13 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
 
               <button 
                 onClick={() => handleScroll(contactSectionId)}
-                className="rounded-xl px-6.5 py-3.5 text-sm font-semibold border border-white/10 bg-white/3 backdrop-blur-md text-slate-200 hover:bg-white/8 hover:text-white transition-all duration-300 cursor-pointer"
+                className="rounded-xl px-6.5 py-3.5 text-sm font-semibold border border-red-500/10 bg-red-950/10 backdrop-blur-md text-slate-200 hover:bg-red-950/30 hover:text-white transition-all duration-300 cursor-pointer"
               >
                 Contact Me
               </button>
             </motion.div>
 
-            {/* Social Connection Media */}
+            {/* Social Matrix Actions updated with red hover states */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -154,25 +154,25 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
                   key={index}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10.5 h-10.5 rounded-xl bg-white/3 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-linear-to-br hover:from-blue-600 hover:to-cyan-500 hover:border-transparent hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-10.5 h-10.5 rounded-xl bg-white/3 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-linear-to-br hover:from-red-600 hover:to-rose-500 hover:border-transparent hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Icon size={17} />
                 </a>
               ))}
             </motion.div>
 
-            {/* Grid Metrics / Stats Component */}
+            {/* Grid Metrics / Stats Component bordered with matching red nuances */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="grid grid-cols-3 gap-3.5 mt-11 max-w-sm mx-auto lg:mx-0 border-t border-white/5 pt-7"
+              className="grid grid-cols-3 gap-3.5 mt-11 max-w-sm mx-auto lg:mx-0 border-t border-red-950/20 pt-7"
             >
               {stats.map((item, index) => (
                 <motion.div
                   whileHover={{ y: -3.5 }}
                   key={index}
-                  className="p-3.5 rounded-xl bg-white/2 border border-white/5 backdrop-blur-md hover:border-blue-500/20 transition-all duration-300"
+                  className="p-3.5 rounded-xl bg-red-950/5 border border-red-500/5 backdrop-blur-md hover:border-red-500/20 transition-all duration-300"
                 >
                   <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight">
                     {item.value}
@@ -193,23 +193,23 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
               transition={{ duration: 0.8 }}
               className="relative w-full max-w-[270px] sm:max-w-[310px] md:max-w-[350px] lg:max-w-full aspect-4/5 px-4"
             >
-              {/* Outer Core Glow Layer */}
-              <div className="absolute inset-0 bg-linear-to-tr from-blue-500/10 via-cyan-500/5 to-purple-500/10 blur-[120px] rounded-full pointer-events-none" />
+              {/* Outer Core Glow Layer shifted to Deep Red and Rose */}
+              <div className="absolute inset-0 bg-linear-to-tr from-red-500/10 via-rose-500/5 to-red-600/10 blur-[120px] rounded-full pointer-events-none" />
 
-              {/* Dynamic Stack Banner Top Wrapper */}
+              {/* Tech Stack Matrix Pill Labels */}
               <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 flex flex-wrap justify-center gap-1 z-20 w-full px-2 max-w-[90%]">
                 {techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2.5 py-0.5 rounded-md bg-slate-900/80 border border-white/10 backdrop-blur-md text-[10px] font-medium text-slate-300 shadow-sm"
+                    className="px-2.5 py-0.5 rounded-md bg-slate-900/80 border border-red-500/10 backdrop-blur-md text-[10px] font-medium text-slate-300 shadow-sm"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              {/* Styled Interactive Backdrop Image Canvas */}
-              <div className="absolute -inset-1 rounded-[2.3rem] bg-linear-to-tr from-blue-500/20 via-cyan-400/20 to-purple-500/20 blur-md pointer-events-none opacity-80" />
+              {/* Styled Crimson-Glass Backdrop Canvas Container */}
+              <div className="absolute -inset-1 rounded-[2.3rem] bg-linear-to-tr from-red-500/20 via-rose-400/20 to-red-600/20 blur-md pointer-events-none opacity-80" />
 
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
@@ -225,7 +225,7 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
                   sizes="(max-width: 640px) 270px, (max-width: 768px) 310px, (max-width: 1024px) 350px, 420px"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-[#030014]/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-neutral-950/80 via-transparent to-transparent" />
               </motion.div>
 
               {/* Embedded Metrics Float-Card Footer */}
@@ -233,14 +233,14 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="absolute -bottom-3.5 left-1/2 -translate-x-1/2 px-4.5 py-2 rounded-xl border border-white/10 bg-slate-900/80 backdrop-blur-md shadow-xl whitespace-nowrap z-20"
+                className="absolute -bottom-3.5 left-1/2 -translate-x-1/2 px-4.5 py-2 rounded-xl border border-red-500/10 bg-slate-900/80 backdrop-blur-md shadow-xl whitespace-nowrap z-20"
               >
                 <p className="text-white text-xs sm:text-sm font-semibold tracking-wide">
-                  💼 4+ Years Experience
+                  💼 3+ Years Experience
                 </p>
               </motion.div>
 
-              {/* Floating Orbiting Mini Badges */}
+              {/* Floating Orbiting Mini Badges stylized in Crimson */}
               <motion.div
                 animate={{ y: [0, -9, 0] }}
                 transition={{
@@ -248,9 +248,9 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
                   duration: 5,
                   ease: "easeInOut",
                 }}
-                className="hidden md:block absolute -left-7 top-1/4 px-3.5 py-2 rounded-xl bg-slate-900/80 backdrop-blur-md border border-white/10 text-xs text-slate-200 font-medium shadow-lg"
+                className="hidden md:block absolute -left-7 top-1/4 px-3.5 py-2 rounded-xl bg-slate-900/80 backdrop-blur-md border border-red-500/10 text-xs text-slate-200 font-medium shadow-lg"
               >
-                ⚛️ MERN Stack Expert
+                🍎 MERN Stack Expert
               </motion.div>
 
               <motion.div
@@ -260,10 +260,10 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
                   duration: 6,
                   ease: "easeInOut",
                 }}
-                className="hidden md:block absolute -right-7 bottom-1/4 px-3.5 py-2 rounded-xl bg-slate-900/80 backdrop-blur-md border border-white/10 text-xs text-slate-200 font-medium shadow-lg"
+                className="hidden md:block absolute -right-7 bottom-1/4 px-3.5 py-2 rounded-xl bg-slate-900/80 backdrop-blur-md border border-red-500/10 text-xs text-slate-200 font-medium shadow-lg"
               >
-                🚀 Full Stack Developer <br /> 
-                🚀 Software Engineer
+                💥 Full Stack Developer <br /> 
+                💥 Software Engineer
               </motion.div>
             </motion.div>
           </div>

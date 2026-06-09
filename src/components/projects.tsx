@@ -9,7 +9,7 @@ interface Project {
   tech: string[];
   sourceUrl: string;
   liveUrl: string;
-  imageUrl: string; // Added image URL tracking
+  imageUrl: string; 
 }
 
 const projects: Project[] = [
@@ -150,12 +150,12 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative py-24 px-4 sm:px-6 md:py-32 md:px-12 max-w-7xl mx-auto overflow-hidden text-white"
+      className="relative py-24 px-4 sm:px-6 md:py-32 md:px-12 max-w-7xl mx-auto overflow-hidden text-neutral-100"
     >
-      {/* Premium Ambient Background Glows */}
+      {/* High-fidelity premium background ambient setup */}
       <div className="absolute inset-0 -z-10 pointer-events-none select-none">
-        <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] bg-blue-500/10 blur-[130px] rounded-full" />
-        <div className="absolute bottom-12 right-10 w-[280px] sm:w-[450px] h-[280px] sm:h-[440px] bg-purple-500/10 blur-[130px] rounded-full" />
+        <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[340px] sm:w-[650px] h-[340px] sm:h-[650px] bg-red-600/10 blur-[140px] rounded-full" />
+        <div className="absolute bottom-12 right-10 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-rose-600/10 blur-[140px] rounded-full" />
       </div>
 
       {/* Section Header */}
@@ -164,7 +164,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-xs sm:text-sm font-semibold tracking-widest text-blue-400 uppercase bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20"
+          className="text-xs sm:text-sm font-semibold tracking-widest text-red-400 uppercase bg-red-950/40 px-4 py-1.5 rounded-full border border-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.05)]"
         >
           System Implementations
         </motion.span>
@@ -173,7 +173,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="mt-4 text-4xl sm:text-5xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-b from-white to-zinc-400"
+          className="mt-5 text-4xl sm:text-5xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-b from-white via-neutral-200 to-neutral-500"
         >
           Featured Infrastructures
         </motion.h2>
@@ -182,14 +182,14 @@ export default function Projects() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-4 text-sm sm:text-base text-zinc-400 max-w-2xl mx-auto leading-relaxed"
+          className="mt-4 text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed"
         >
           Production-grade applications and scalable systems engineered for
           extreme performance, security, and intuitive UX.
         </motion.p>
       </div>
 
-      {/* Bento-Inspired Responsive Grid */}
+      {/* Bento Layout Grid System */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -204,59 +204,60 @@ export default function Projects() {
             whileHover={{ y: -6 }}
             className="group relative flex flex-col h-full"
           >
-            {/* Hover Glow Ring */}
-            <div className="absolute -inset-px rounded-[24px] bg-linear-to-br from-blue-500/30 via-zinc-800 to-purple-500/30 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 -z-10" />
+            {/* Soft Ambient Card Border Glow Accent */}
+            <div className="absolute -inset-px rounded-[24px] bg-linear-to-br from-red-500/25 via-neutral-900 to-rose-500/25 opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-500 -z-10" />
 
-            {/* Main Interactive Card Structure */}
-            <div className="relative flex flex-col h-full rounded-[24px] border border-zinc-800 bg-zinc-950/40 backdrop-blur-2xl overflow-hidden shadow-2xl transition-all duration-300 group-hover:border-zinc-700/80">
-              {/* Dynamic Project Image Header with Fallback Pattern */}
-              <div className="h-44 sm:h-48 bg-zinc-900 border-b border-zinc-900 relative overflow-hidden">
+            {/* Completely transformed Dark Crimson/Ruby Bento Card Shell */}
+            <div className="relative flex flex-col h-full rounded-[24px] border border-red-950/40 bg-neutral-950/70 backdrop-blur-3xl overflow-hidden shadow-2xl transition-all duration-300 group-hover:border-red-900/50">
+              
+              {/* Media Distribution Block */}
+              <div className="h-44 sm:h-48 bg-red-950/10 border-b border-red-950/30 relative overflow-hidden">
                 {project.imageUrl ? (
                   <img
                     src={project.imageUrl}
-                    alt={`${project.title} abstract visual preview`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    alt={`${project.title} visualization`}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-[0.85] contrast-[1.05] saturate-[0.75] group-hover:saturate-100 group-hover:brightness-100"
                     loading="lazy"
                   />
                 ) : (
-                  <div className="absolute inset-0 opacity-15 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-size-[16px_16px]" />
+                  <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#ef444408_1px,transparent_1px),linear-gradient(to_bottom,#ef444408_1px,transparent_1px)] bg-size-[16px_16px]" />
                 )}
-                <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
               </div>
 
-              {/* Core Content Area */}
+              {/* Card Core Workspace */}
               <div className="p-6 sm:p-8 flex flex-col grow">
-                <h3 className="text-xl font-bold tracking-tight text-zinc-100 group-hover:text-white transition-colors duration-200">
+                <h3 className="text-xl font-bold tracking-tight text-neutral-200 group-hover:text-white transition-colors duration-200">
                   {project.title}
                 </h3>
 
-                <p className="mt-3 text-xs sm:text-sm text-zinc-400 leading-relaxed grow">
+                <p className="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed grow">
                   {project.description}
                 </p>
 
-                {/* Tech Chips */}
+                {/* Micro Tech Badges containing Crimson borders */}
                 <div className="flex flex-wrap gap-1.5 mt-6 mb-6">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="text-[10px] sm:text-xs font-medium px-2.5 py-0.5 rounded-md border border-zinc-800 bg-zinc-900/50 text-zinc-300 tracking-wide"
+                      className="text-[10px] sm:text-xs font-medium px-2.5 py-0.5 rounded-md border border-red-950/50 bg-red-950/20 text-neutral-300 tracking-wide transition-colors group-hover:border-red-900/40 group-hover:text-neutral-200"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Structural Action Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-zinc-900 mt-auto">
+                {/* Actions Footer Section */}
+                <div className="flex items-center justify-between pt-4 border-t border-red-950/40 mt-auto">
                   <a
                     href={project.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-200 transition-colors duration-200"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-500 hover:text-neutral-200 transition-colors duration-200"
                   >
                     <GitBranch
                       size={15}
-                      className="text-zinc-600 group-hover:text-blue-400 transition-colors duration-300"
+                      className="text-neutral-600 group-hover:text-red-400 transition-colors duration-300"
                     />
                     <span>Source</span>
                   </a>
@@ -265,7 +266,7 @@ export default function Projects() {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold px-4 py-2 rounded-full bg-zinc-100 text-zinc-950 hover:bg-white shadow-md hover:shadow-lg transition-all duration-200 group-hover:scale-[1.02]"
+                    className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold px-4 py-2 relative overflow-hidden rounded-full bg-neutral-100 text-neutral-950 hover:bg-white shadow-md hover:shadow-xl transition-all duration-200 group-hover:scale-[1.02]"
                   >
                     <span>Deployment</span>
                     <ArrowUpRight size={14} className="stroke-[2.5]" />

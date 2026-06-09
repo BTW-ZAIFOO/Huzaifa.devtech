@@ -18,7 +18,8 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <main className="bg-[#050816] text-white overflow-hidden min-h-screen">
+    /* Shifted baseline layout from cold blue-black to an ultra-premium dark ruby/crimson foundation */
+    <main className="bg-[#0a0304] text-white overflow-hidden min-h-screen">
       <AnimatePresence mode="wait">
         {isLoading ? (
           <Loader key="loader" finishLoading={() => setIsLoading(false)} />

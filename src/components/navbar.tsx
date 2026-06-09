@@ -87,19 +87,19 @@ export default function Navbar() {
           <div
             className={`relative flex items-center justify-between rounded-2xl border transition-all duration-500 overflow-hidden ${
               scrolled
-                ? "bg-neutral-950/70 backdrop-blur-xl border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)]"
+                ? "bg-neutral-950/70 backdrop-blur-xl border-red-950/30 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]"
                 : "bg-transparent border-transparent"
             }`}
           >
-            {/* Subtle premium mesh background gradient visible only on scroll */}
+            {/* Ambient premium mesh background gradient updated to reds and roses */}
             <div
-              className={`absolute inset-0 bg-linear-to-r from-blue-500/5 via-violet-500/5 to-cyan-500/5 pointer-events-none transition-opacity duration-500 ${
+              className={`absolute inset-0 bg-linear-to-r from-red-500/5 via-rose-500/5 to-red-600/5 pointer-events-none transition-opacity duration-500 ${
                 scrolled ? "opacity-100" : "opacity-0"
               }`}
             />
 
             <div className="relative w-full flex items-center justify-between px-5 py-3.5 md:px-6 md:py-4">
-              {/* Logo */}
+              {/* Logo with Red-Rose branding gradient */}
               <motion.a
                 href="#about"
                 onClick={(e) => handleLinkClick(e, "About")}
@@ -109,13 +109,13 @@ export default function Navbar() {
               >
                 <h1 className="text-base md:text-lg font-black tracking-[0.2em] text-white transition-colors duration-300 group-hover:text-neutral-200">
                   HUZAIFA
-                  <span className="bg-linear-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                  <span className="bg-linear-to-r from-red-400 via-rose-400 to-red-500 bg-clip-text text-transparent">
                     .DEVTECH
                   </span>
                 </h1>
               </motion.a>
 
-              {/* Desktop Navigation */}
+              {/* Desktop Navigation Links */}
               <nav className="hidden lg:flex items-center gap-1">
                 {links.map((item) => {
                   const isLinkActive = active === item;
@@ -134,7 +134,7 @@ export default function Navbar() {
                       {isLinkActive && (
                         <motion.span
                           layoutId="desktop-active-pill"
-                          className="absolute inset-0 bg-white/5 border border-white/10 rounded-xl"
+                          className="absolute inset-0 bg-white/5 border border-red-500/10 rounded-xl"
                           transition={{
                             type: "spring",
                             stiffness: 380,
@@ -147,17 +147,17 @@ export default function Navbar() {
                 })}
               </nav>
 
-              {/* Desktop CTA Button */}
+              {/* Desktop CTA Action Button styled in Crimson */}
               <div className="hidden lg:flex items-center">
                 <motion.a
                   href="#contact"
                   onClick={(e) => handleLinkClick(e, "Contact")}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="relative group overflow-hidden rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white border border-white/10 shadow-lg"
+                  className="relative group overflow-hidden rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white border border-red-500/10 shadow-lg"
                 >
-                  <span className="absolute inset-0 bg-linear-to-r from-blue-600 via-indigo-600 to-cyan-600" />
-                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-r from-cyan-600 via-blue-600 to-indigo-600" />
+                  <span className="absolute inset-0 bg-linear-to-r from-red-600 via-rose-600 to-red-700" />
+                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-r from-red-700 via-red-600 to-rose-600" />
                   <span className="relative z-10 flex items-center gap-1">
                     Let's Talk
                   </span>
@@ -192,15 +192,15 @@ export default function Navbar() {
               className="fixed inset-0 bg-neutral-950/60 backdrop-blur-md z-40 lg:hidden"
             />
 
-            {/* Premium Mobile Menu Slide Sheet */}
+            {/* Premium Mobile Menu Slide Sheet with Crimson Borders */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 26, stiffness: 220 }}
-              className="fixed top-0 right-0 h-screen w-full sm:w-[360px] bg-neutral-950/95 backdrop-blur-2xl border-l border-white/10 z-40 flex flex-col justify-between p-6 pt-28 pb-10 lg:hidden"
+              className="fixed top-0 right-0 h-screen w-full sm:w-[360px] bg-neutral-950/95 backdrop-blur-2xl border-l border-red-950/30 z-40 flex flex-col justify-between p-6 pt-28 pb-10 lg:hidden"
             >
-              {/* Menu items navigation list */}
+              {/* Menu items navigation list shifted to Red theme */}
               <div className="flex flex-col gap-1.5">
                 {links.map((item, index) => {
                   const isLinkActive = active === item;
@@ -215,7 +215,7 @@ export default function Navbar() {
                       onClick={(e) => handleLinkClick(e, item)}
                       className={`relative px-4 py-4 text-base font-semibold rounded-2xl flex items-center justify-between border transition-all ${
                         isLinkActive
-                          ? "text-blue-400 bg-white/5 border-white/10"
+                          ? "text-red-400 bg-white/5 border-red-500/10"
                           : "text-neutral-400 border-transparent hover:text-white"
                       }`}
                     >
@@ -223,7 +223,7 @@ export default function Navbar() {
                       {isLinkActive && (
                         <motion.span
                           layoutId="mobile-active-indicator"
-                          className="h-2 w-2 rounded-full bg-blue-400"
+                          className="h-2 w-2 rounded-full bg-red-400 shadow-[0_0_8px_rgba(239,68,68,0.6)]"
                         />
                       )}
                     </motion.a>
@@ -243,7 +243,7 @@ export default function Navbar() {
                   href="mailto:huzaifazaifi25@gmail.com"
                   onClick={() => setIsOpen(false)}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full block text-center rounded-2xl bg-linear-to-r from-blue-600 via-indigo-600 to-cyan-600 px-5 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-500/10"
+                  className="w-full block text-center rounded-2xl bg-linear-to-r from-red-600 via-rose-600 to-red-700 px-5 py-4 text-sm font-semibold text-white shadow-lg shadow-red-600/10"
                 >
                   Let's Talk
                 </motion.a>
