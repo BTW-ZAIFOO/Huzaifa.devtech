@@ -9,7 +9,7 @@ import {
 import { Menu, X } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 
-const links = ["About", "Experience", "Skills", "Projects", "Contact"];
+const links = ["About", "Education", "Experience", "Skills", "Projects", "Contact"];
 
 export default function Navbar() {
   const [active, setActive] = useState("About");
@@ -65,6 +65,23 @@ export default function Navbar() {
     }
   };
 
+  // Custom function to handle scrolling completely to the top of the window
+  const handleScrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsOpen(false);
+    setActive("About"); // Defaults highlight back to initial state
+    
+    isClickScrolling.current = true;
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    setTimeout(() => {
+      isClickScrolling.current = false;
+    }, 800);
+  };
+
   // Lock body scroll when mobile drawer is active
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
@@ -99,17 +116,18 @@ export default function Navbar() {
             />
 
             <div className="relative w-full flex items-center justify-between px-5 py-3.5 md:px-6 md:py-4">
-              {/* Logo with Red-Rose branding gradient */}
+              
+              {/* Branding Element - Custom Bold Style Layout */}
               <motion.a
-                href="#about"
-                onClick={(e) => handleLinkClick(e, "About")}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative flex items-center gap-1.5 focus:outline-none"
+                href="#"
+                onClick={handleScrollToTop}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="group relative flex items-center focus:outline-none select-none"
               >
-                <h1 className="text-base md:text-lg font-black tracking-[0.2em] text-white transition-colors duration-300 group-hover:text-neutral-200">
+                <h1 className="text-sm md:text-base tracking-[0.2em] text-white transition-colors duration-300 flex items-center gap-2 font-bold">
                   HUZAIFA
-                  <span className="bg-linear-to-r from-red-400 via-rose-400 to-red-500 bg-clip-text text-transparent">
+                  <span className="relative font-sans text-xs font-extrabold tracking-wider px-2.5 py-1 rounded bg-red-950/40 border-2 border-red-500/30 text-red-400 shadow-[0_0_20px_rgba(239,68,68,0.08)] transition-all duration-300 group-hover:border-red-500/50 group-hover:bg-red-950/60">
                     .DEVTECH
                   </span>
                 </h1>

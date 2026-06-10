@@ -13,7 +13,7 @@ import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 import ScrollProgress from "@/components/scrollprogress";
 import Loader from "@/components/loader";
-import { EducationSection } from "@/components/education";
+import EducationSection from "@/components/education";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
