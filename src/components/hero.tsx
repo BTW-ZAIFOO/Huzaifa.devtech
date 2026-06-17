@@ -1,13 +1,15 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaGithub,
   FaLinkedin,
   FaArrowRight,
   FaEnvelope,
   FaWhatsapp,
+  FaShieldAlt,
 } from "react-icons/fa";
 
 const techStack = ["React", "Next.js", "TypeScript", "TailwindCSS", "Node.js"];
@@ -27,15 +29,29 @@ export default function Hero({
   projectsSectionId = "projects",
   contactSectionId = "contact",
 }: HeroProps) {
-  // Smooth scroll handler for standard section targets
+  const [showPopup, setShowPopup] = useState(false);
+
+  // Automatically close the popup after 4 seconds
+  useEffect(() => {
+    if (showPopup) {
+      const timer = setTimeout(() => setShowPopup(false), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [showPopup]);
+
   const handleScroll = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     } else {
-      // Fallback: If section isn't on the current page, try native anchor navigation
       window.location.hash = id;
     }
+  };
+
+  const handleWhatsappClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // block any native anchor navigation
+    e.preventDefault();
+    setShowPopup(true);
   };
 
   return (
@@ -57,7 +73,7 @@ export default function Hero({
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* LEFT CONTENT BLOCK */}
           <div className="lg:col-span-7 text-center lg:text-left order-2 lg:order-1">
-            {/* Tagline Badge stylized in red */}
+            {/* Tagline Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -68,7 +84,7 @@ export default function Hero({
               </span>
             </motion.div>
 
-            {/* Main Headline with Red to Rose Typography Gradient */}
+            {/* Main Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -96,7 +112,7 @@ export default function Hero({
               </p>
             </motion.div>
 
-            {/* Availability Indicator remains green for functional status consistency */}
+            {/* Availability Indicator */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -124,7 +140,7 @@ export default function Hero({
               with modern technologies and exceptional user experiences.
             </motion.p>
 
-            {/* Action Buttons refactored to Crimson theme */}
+            {/* Action Buttons */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -147,7 +163,7 @@ export default function Hero({
               </button>
             </motion.div>
 
-            {/* Social Matrix Actions updated with red hover states */}
+            {/* Social Matrix Actions */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -155,19 +171,29 @@ export default function Hero({
               className="flex justify-center lg:justify-start gap-3 mt-8"
             >
               {[
-                { Icon: FaGithub, link: "https://github.com/BTW-ZAIFOO" },
+                {
+                  Icon: FaGithub,
+                  link: "https://github.com/BTW-ZAIFOO",
+                  isCustomHandler: false,
+                },
                 {
                   Icon: FaLinkedin,
                   link: "https://www.linkedin.com/in/huzaifa-bin-afzal-880a37398?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+                  isCustomHandler: false,
                 },
-                { Icon: FaEnvelope, link: "mailto:huzaifazaifi25@gmail.com" },
-                { Icon: FaWhatsapp, link: "https://wa.me/923105456889" },
-              ].map(({ Icon, link }, index) => (
+                {
+                  Icon: FaEnvelope,
+                  link: "mailto:huzaifazaifi25@gmail.com",
+                  isCustomHandler: false,
+                },
+                { Icon: FaWhatsapp, link: "#", isCustomHandler: true },
+              ].map(({ Icon, link, isCustomHandler }, index) => (
                 <a
                   href={link}
                   key={index}
-                  target="_blank"
+                  target={isCustomHandler ? undefined : "_blank"}
                   rel="noopener noreferrer"
+                  onClick={isCustomHandler ? handleWhatsappClick : undefined}
                   className="w-10.5 h-10.5 rounded-xl bg-white/3 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-linear-to-br hover:from-red-600 hover:to-rose-500 hover:border-transparent hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <Icon size={17} />
@@ -175,7 +201,7 @@ export default function Hero({
               ))}
             </motion.div>
 
-            {/* Grid Metrics / Stats Component bordered with matching red nuances */}
+            {/* Grid Metrics / Stats */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -207,10 +233,8 @@ export default function Hero({
               transition={{ duration: 0.8 }}
               className="relative w-full max-w-[270px] sm:max-w-[310px] md:max-w-[350px] lg:max-w-full aspect-4/5 px-4"
             >
-              {/* Outer Core Glow Layer shifted to Deep Red and Rose */}
               <div className="absolute inset-0 bg-linear-to-tr from-red-500/10 via-rose-500/5 to-red-600/10 blur-[120px] rounded-full pointer-events-none" />
 
-              {/* Tech Stack Matrix Pill Labels */}
               <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 flex flex-wrap justify-center gap-1 z-20 w-full px-2 max-w-[90%]">
                 {techStack.map((tech) => (
                   <span
@@ -222,7 +246,6 @@ export default function Hero({
                 ))}
               </div>
 
-              {/* Styled Crimson-Glass Backdrop Canvas Container */}
               <div className="absolute -inset-1 rounded-[2.3rem] bg-linear-to-tr from-red-500/20 via-rose-400/20 to-red-600/20 blur-md pointer-events-none opacity-80" />
 
               <motion.div
@@ -242,7 +265,6 @@ export default function Hero({
                 <div className="absolute inset-0 bg-linear-to-t from-neutral-950/80 via-transparent to-transparent" />
               </motion.div>
 
-              {/* Embedded Metrics Float-Card Footer */}
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -254,7 +276,6 @@ export default function Hero({
                 </p>
               </motion.div>
 
-              {/* Floating Orbiting Mini Badges stylized in Crimson */}
               <motion.div
                 animate={{ y: [0, -9, 0] }}
                 transition={{
@@ -264,7 +285,7 @@ export default function Hero({
                 }}
                 className="hidden md:block absolute -left-7 top-1/4 px-3.5 py-2 rounded-xl bg-slate-900/80 backdrop-blur-md border border-red-500/10 text-xs text-slate-200 font-medium shadow-lg"
               >
-                🍎 MERN Stack Expert
+                💻 MERN Stack Expert
               </motion.div>
 
               <motion.div
@@ -283,6 +304,32 @@ export default function Hero({
           </div>
         </div>
       </div>
+
+      {/* FIXED PRIVACY DIALOG NOTIFICATION */}
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 350, damping: 28 }}
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-3.5 px-5 py-4 rounded-2xl border border-red-500/20 bg-neutral-900/85 backdrop-blur-xl shadow-2xl shadow-red-950/40 max-w-sm"
+          >
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 shrink-0">
+              <FaShieldAlt size={18} className="animate-pulse" />
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-white tracking-wide">
+                Direct Contact Restricted
+              </h4>
+              <p className="text-xs text-slate-400 mt-0.5 leading-relaxed font-normal">
+                To protect privacy, direct WhatsApp routing is hidden. Please
+                use the **Contact Me** form or email instead.
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

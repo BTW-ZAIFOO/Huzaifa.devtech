@@ -1,13 +1,30 @@
 "use client";
 
-import { Mail, ArrowUpRight, ArrowUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Mail, ArrowUpRight, ArrowUp, ShieldAlert } from "lucide-react";
 import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa6";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [showPopup, setShowPopup] = useState(false);
+
+  // Automatically close the privacy popup after 4 seconds
+  useEffect(() => {
+    if (showPopup) {
+      const timer = setTimeout(() => setShowPopup(false), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [showPopup]);
 
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleWhatsappClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Intercept navigation completely
+    e.preventDefault();
+    setShowPopup(true);
   };
 
   const footerLinks = {
@@ -38,21 +55,25 @@ export default function Footer() {
         icon: <FaGithub size={18} />,
         href: "https://github.com/BTW-ZAIFOO",
         label: "GitHub",
+        isProtected: false,
       },
       {
         icon: <FaLinkedin size={18} />,
         href: "https://www.linkedin.com/in/huzaifa-bin-afzal-880a37398?utm_source=share_via&utm_content=profile&utm_medium=member_android",
         label: "LinkedIn",
+        isProtected: false,
       },
       {
         icon: <Mail size={18} />,
         href: "mailto:huzaifazaifi25@gmail.com",
         label: "Email",
+        isProtected: false,
       },
       {
         icon: <FaWhatsapp size={18} />,
-        href: "https://wa.me/923105456889",
+        href: "#", // Changed link to an empty fragment hash to completely hide your number
         label: "WhatsApp",
+        isProtected: true,
       },
     ],
   };
@@ -74,7 +95,6 @@ export default function Footer() {
           {/* Brand Identity Pillar */}
           <div className="lg:col-span-5 flex flex-col space-y-6">
             <div className="flex items-center gap-2.5">
-              {/* Branding indicator pulse shifted to red */}
               <span className="h-2 w-2 rounded-full bg-red-400 shadow-[0_0_12px_rgba(239,68,68,0.8)] animate-pulse" />
               <span className="text-xl font-black tracking-wider uppercase text-zinc-100">
                 Huzaifa
@@ -89,7 +109,7 @@ export default function Footer() {
               growth to create exceptional user experiences.
             </p>
 
-            {/* Live Operations Badge remains green */}
+            {/* Live Operations Badge */}
             <div className="inline-flex items-center gap-2 w-fit rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3.5 py-1 text-xs font-medium text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.03)]">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -108,7 +128,6 @@ export default function Footer() {
               <ul className="space-y-3 text-sm font-light text-zinc-400">
                 {footerLinks.navigation.map((link) => (
                   <li key={link.name}>
-                    {/* Underline focus animation shifted to red */}
                     <a
                       href={link.href}
                       className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-red-400 after:transition-all after:duration-300 hover:after:w-full hover:text-zinc-100 transition-colors duration-200"
@@ -127,7 +146,6 @@ export default function Footer() {
               <ul className="space-y-3 text-sm font-light text-zinc-400">
                 {footerLinks.showcase.map((link) => (
                   <li key={link.name}>
-                    {/* Projects link styling shifted to rose */}
                     <a
                       href={link.href}
                       target="_blank"
@@ -147,10 +165,9 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Glowing Glassmorphic CTA Module updated to red palette */}
+            {/* Glowing Glassmorphic CTA Module */}
             <div className="col-span-2 sm:col-span-1 flex flex-col justify-start pt-2 sm:pt-0">
               <div className="group relative rounded-2xl p-px overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_rgba(220,38,38,0.2)]">
-                {/* Animated Border Ring */}
                 <div className="absolute inset-0 bg-linear-to-r from-red-500/50 via-rose-500/20 to-red-600/50 opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <a
@@ -174,15 +191,16 @@ export default function Footer() {
             <p>© {currentYear} Huzaifa.devtech. All rights reserved.</p>
           </div>
 
-          {/* Social Array & Escape Anchor styled with red transitions */}
+          {/* Social Array & Escape Anchor */}
           <div className="flex items-center gap-3">
             {footerLinks.socials.map((social, i) => (
               <a
                 key={i}
                 href={social.href}
-                target="_blank"
+                target={social.isProtected ? undefined : "_blank"}
                 rel="noopener noreferrer"
                 aria-label={social.label}
+                onClick={social.isProtected ? handleWhatsappClick : undefined}
                 className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-800/80 bg-zinc-950/40 text-zinc-400/90 transition-all duration-300 hover:border-red-500/40 hover:bg-red-500/5 hover:text-red-400 hover:-translate-y-0.5 shadow-xs"
               >
                 {social.icon}
@@ -191,7 +209,7 @@ export default function Footer() {
 
             <div className="h-4 w-px bg-zinc-800/80 mx-1" />
 
-            {/* Micro-Glow Scroll Launcher shifted to rose */}
+            {/* Micro-Glow Scroll Launcher */}
             <button
               onClick={handleScrollToTop}
               aria-label="Scroll to top"
@@ -205,6 +223,32 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      {/* FOOTER PRIVACY DIALOG NOTIFICATION */}
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 350, damping: 28 }}
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-3.5 px-5 py-4 rounded-2xl border border-red-500/20 bg-neutral-900/85 backdrop-blur-xl shadow-2xl shadow-red-950/40 max-w-sm"
+          >
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 shrink-0">
+              <ShieldAlert size={18} className="animate-pulse" />
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-white tracking-wide">
+                Direct Contact Restricted
+              </h4>
+              <p className="text-xs text-slate-400 mt-0.5 leading-relaxed font-normal">
+                To protect privacy, direct WhatsApp routing is hidden. Please
+                use the **Contact Me** form or email instead.
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 }
