@@ -96,7 +96,7 @@ const projects: Project[] = [
       "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Invextech Corporate Node",
+    title: "Invextech Corporate Website",
     description:
       "A business-centric application displaying deep structural component architecture, performance-optimized media distribution, and global asset management.",
     tech: ["Next.js", "Tailwind CSS", "Google Fonts", "React Icons"],
@@ -106,7 +106,7 @@ const projects: Project[] = [
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Real-time Chat Moderation Ecosystem",
+    title: "Real-time Chat Moderation System",
     description:
       "An intricate full-stack communication infrastructure featuring persistent WebSockets connections, secure isolated OTP authentication, and automated moderation layers.",
     tech: [
