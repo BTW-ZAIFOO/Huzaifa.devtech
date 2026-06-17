@@ -2,7 +2,13 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaArrowRight, FaEnvelope, FaWhatsapp } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaArrowRight,
+  FaEnvelope,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 const techStack = ["React", "Next.js", "TypeScript", "TailwindCSS", "Node.js"];
 
@@ -17,8 +23,10 @@ interface HeroProps {
   contactSectionId?: string;
 }
 
-export default function Hero({ projectsSectionId = "projects", contactSectionId = "contact" }: HeroProps) {
-  
+export default function Hero({
+  projectsSectionId = "projects",
+  contactSectionId = "contact",
+}: HeroProps) {
   // Smooth scroll handler for standard section targets
   const handleScroll = (id: string) => {
     const element = document.getElementById(id);
@@ -83,7 +91,8 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
               <p className="text-base sm:text-lg text-slate-300 font-medium tracking-normal">
                 Software Engineer{" "}
                 <span className="text-red-500/60 mx-1">•</span> Full Stack
-                Developer <span className="text-red-500/60 mx-1">•</span> <span> Mobile App Developer</span>
+                Developer <span className="text-red-500/60 mx-1">•</span>{" "}
+                <span> Mobile App Developer</span>
               </p>
             </motion.div>
 
@@ -110,7 +119,9 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
               transition={{ delay: 0.5 }}
               className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal opacity-95"
             >
-              Building scalable web and mobile applications, SaaS platforms, enterprise software, AI-powered products, and digital experiences with modern technologies and exceptional user experiences.
+              Building scalable web and mobile applications, SaaS platforms,
+              enterprise software, AI-powered products, and digital experiences
+              with modern technologies and exceptional user experiences.
             </motion.p>
 
             {/* Action Buttons refactored to Crimson theme */}
@@ -120,7 +131,7 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
               transition={{ delay: 0.6 }}
               className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-8"
             >
-              <button 
+              <button
                 onClick={() => handleScroll(projectsSectionId)}
                 className="group flex items-center justify-center gap-2 rounded-xl px-6.5 py-3.5 text-sm font-semibold bg-linear-to-r from-red-600 via-rose-500 to-red-600 text-white shadow-lg shadow-red-600/10 hover:shadow-red-600/30 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
               >
@@ -128,7 +139,7 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
                 <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" />
               </button>
 
-              <button 
+              <button
                 onClick={() => handleScroll(contactSectionId)}
                 className="rounded-xl px-6.5 py-3.5 text-sm font-semibold border border-red-500/10 bg-red-950/10 backdrop-blur-md text-slate-200 hover:bg-red-950/30 hover:text-white transition-all duration-300 cursor-pointer"
               >
@@ -145,9 +156,12 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
             >
               {[
                 { Icon: FaGithub, link: "https://github.com/BTW-ZAIFOO" },
-                { Icon: FaLinkedin, link: "https://www.linkedin.com/in/huzaifa-bin-afzal-880a37398?utm_source=share_via&utm_content=profile&utm_medium=member_android" },
+                {
+                  Icon: FaLinkedin,
+                  link: "https://www.linkedin.com/in/huzaifa-bin-afzal-880a37398?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+                },
                 { Icon: FaEnvelope, link: "mailto:huzaifazaifi25@gmail.com" },
-                { Icon: FaWhatsapp, link: "https://wa.me/923105456889" }
+                { Icon: FaWhatsapp, link: "https://wa.me/923105456889" },
               ].map(({ Icon, link }, index) => (
                 <a
                   href={link}
@@ -262,7 +276,7 @@ export default function Hero({ projectsSectionId = "projects", contactSectionId 
                 }}
                 className="hidden md:block absolute -right-7 bottom-1/4 px-3.5 py-2 rounded-xl bg-slate-900/80 backdrop-blur-md border border-red-500/10 text-xs text-slate-200 font-medium shadow-lg"
               >
-                💥 Full Stack Developer <br /> 
+                💥 Full Stack Developer <br />
                 💥 Software Engineer
               </motion.div>
             </motion.div>

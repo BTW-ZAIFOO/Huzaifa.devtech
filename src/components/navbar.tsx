@@ -9,7 +9,14 @@ import {
 import { Menu, X } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 
-const links = ["About", "Education", "Experience", "Skills", "Projects", "Contact"];
+const links = [
+  "About",
+  "Education",
+  "Experience",
+  "Skills",
+  "Projects",
+  "Contact",
+];
 
 export default function Navbar() {
   const [active, setActive] = useState("About");
@@ -70,7 +77,7 @@ export default function Navbar() {
     e.preventDefault();
     setIsOpen(false);
     setActive("About"); // Defaults highlight back to initial state
-    
+
     isClickScrolling.current = true;
     window.scrollTo({
       top: 0,
@@ -116,7 +123,6 @@ export default function Navbar() {
             />
 
             <div className="relative w-full flex items-center justify-between px-5 py-3.5 md:px-6 md:py-4">
-              
               {/* Branding Element - Custom Bold Style Layout */}
               <motion.a
                 href="#"

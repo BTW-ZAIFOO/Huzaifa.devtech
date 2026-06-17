@@ -9,7 +9,7 @@ interface Project {
   tech: string[];
   sourceUrl: string;
   liveUrl: string;
-  imageUrl: string; 
+  imageUrl: string;
 }
 
 const projects: Project[] = [
@@ -209,7 +209,6 @@ export default function Projects() {
 
             {/* Completely transformed Dark Crimson/Ruby Bento Card Shell */}
             <div className="relative flex flex-col h-full rounded-[24px] border border-red-950/40 bg-neutral-950/70 backdrop-blur-3xl overflow-hidden shadow-2xl transition-all duration-300 group-hover:border-red-900/50">
-              
               {/* Media Distribution Block */}
               <div className="h-44 sm:h-48 bg-red-950/10 border-b border-red-950/30 relative overflow-hidden">
                 {project.imageUrl ? (

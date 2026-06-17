@@ -1,12 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   FaReact,
   FaNodeJs,
@@ -160,7 +155,6 @@ export default function Skills() {
   const outerSkills = skills.filter((s) => s.tier === "outer");
   const middleSkills = skills.filter((s) => s.tier === "middle");
   const innerSkills = skills.filter((s) => s.tier === "inner");
-
   const centerX = dimensions.width / 2;
   const centerY = dimensions.height / 2;
 
@@ -259,7 +253,7 @@ export default function Skills() {
                 top: centerY,
                 left: centerX,
                 opacity: opacity,
-                borderColor: "rgba(239, 68, 68, 0.4)", 
+                borderColor: "rgba(239, 68, 68, 0.4)",
                 rotate: `${totalAngle}deg`,
               }}
             />

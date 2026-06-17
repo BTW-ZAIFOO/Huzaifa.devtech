@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Mail, ArrowUpRight, ArrowUp } from "lucide-react";
 import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa6";
 
@@ -20,45 +19,76 @@ export default function Footer() {
       { name: "Contact", href: "#contact" },
     ],
     showcase: [
-      { name: "Student Sphere", href: "https://student-task-management-website.vercel.app/" },
-      { name: "Chat Moderation System", href: "https://huzaifa-devv.vercel.app/" },
+      {
+        name: "Student Sphere",
+        href: "https://student-task-management-website.vercel.app/",
+      },
+      {
+        name: "Chat Moderation System",
+        href: "https://huzaifa-devv.vercel.app/",
+      },
       { name: "Hawkrix Corporate Site", href: "https://hawkrix.vercel.app/" },
-      { name: "Invextech Site", href: "https://invextech-site.vercel.app/Home" },
+      {
+        name: "Invextech Site",
+        href: "https://invextech-site.vercel.app/Home",
+      },
     ],
     socials: [
-      { icon: <FaGithub size={18} />, href: "https://github.com/BTW-ZAIFOO", label: "GitHub" },
-      { icon: <FaLinkedin size={18} />, href: "#", label: "LinkedIn" },
-      { icon: <Mail size={18} />, href: "mailto:your.email@example.com", label: "Email" },
-      { icon: <FaWhatsapp size={18} />, href: "https://wa.me/1234567890", label: "WhatsApp" },
+      {
+        icon: <FaGithub size={18} />,
+        href: "https://github.com/BTW-ZAIFOO",
+        label: "GitHub",
+      },
+      {
+        icon: <FaLinkedin size={18} />,
+        href: "https://www.linkedin.com/in/huzaifa-bin-afzal-880a37398?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        label: "LinkedIn",
+      },
+      {
+        icon: <Mail size={18} />,
+        href: "mailto:huzaifazaifi25@gmail.com",
+        label: "Email",
+      },
+      {
+        icon: <FaWhatsapp size={18} />,
+        href: "https://wa.me/923105456889",
+        label: "WhatsApp",
+      },
     ],
   };
 
   return (
     <footer className="relative bg-linear-to-b from-neutral-950 via-red-950/10 to-neutral-950 border-t border-red-950/30 overflow-hidden pt-24 pb-12 text-white">
       {/* High-End Ambient Neon Lighting updated to reds and roses */}
-      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+      <div
+        className="absolute inset-0 pointer-events-none select-none overflow-hidden"
+        aria-hidden="true"
+      >
         <div className="absolute bottom-[-30%] left-1/3 h-[600px] w-[900px] rounded-full bg-red-500/10 blur-[180px]" />
         <div className="absolute top-[-10%] right-[-10%] h-[400px] w-[400px] rounded-full bg-rose-600/10 blur-[140px]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Main Interface Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 pb-16 border-b border-red-950/20">
-          
           {/* Brand Identity Pillar */}
           <div className="lg:col-span-5 flex flex-col space-y-6">
             <div className="flex items-center gap-2.5">
               {/* Branding indicator pulse shifted to red */}
               <span className="h-2 w-2 rounded-full bg-red-400 shadow-[0_0_12px_rgba(239,68,68,0.8)] animate-pulse" />
               <span className="text-xl font-black tracking-wider uppercase text-zinc-100">
-                Huzaifa<span className="bg-linear-to-r from-red-400 to-rose-400 bg-clip-text text-transparent">.devtech</span>
+                Huzaifa
+                <span className="bg-linear-to-r from-red-400 to-rose-400 bg-clip-text text-transparent">
+                  .devtech
+                </span>
               </span>
             </div>
             <p className="text-sm text-zinc-400/90 leading-relaxed max-w-md font-light">
-              Building reliable full-stack applications, modern mobile apps, and intelligent AI integrations. Combining clean code with strategic growth to create exceptional user experiences.
+              Building reliable full-stack applications, modern mobile apps, and
+              intelligent AI integrations. Combining clean code with strategic
+              growth to create exceptional user experiences.
             </p>
-            
+
             {/* Live Operations Badge remains green */}
             <div className="inline-flex items-center gap-2 w-fit rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3.5 py-1 text-xs font-medium text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.03)]">
               <span className="relative flex h-1.5 w-1.5">
@@ -71,14 +101,18 @@ export default function Footer() {
 
           {/* Nav Links Grid */}
           <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-4">
-            
             <div className="flex flex-col space-y-4.5">
-              <h4 className="text-xs font-semibold uppercase tracking-widest text-zinc-500">Links</h4>
+              <h4 className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
+                Links
+              </h4>
               <ul className="space-y-3 text-sm font-light text-zinc-400">
                 {footerLinks.navigation.map((link) => (
                   <li key={link.name}>
                     {/* Underline focus animation shifted to red */}
-                    <a href={link.href} className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-red-400 after:transition-all after:duration-300 hover:after:w-full hover:text-zinc-100 transition-colors duration-200">
+                    <a
+                      href={link.href}
+                      className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-red-400 after:transition-all after:duration-300 hover:after:w-full hover:text-zinc-100 transition-colors duration-200"
+                    >
                       {link.name}
                     </a>
                   </li>
@@ -87,14 +121,26 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-col space-y-4.5">
-              <h4 className="text-xs font-semibold uppercase tracking-widest text-zinc-500">Live Projects</h4>
+              <h4 className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
+                Live Projects
+              </h4>
               <ul className="space-y-3 text-sm font-light text-zinc-400">
                 {footerLinks.showcase.map((link) => (
                   <li key={link.name}>
                     {/* Projects link styling shifted to rose */}
-                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 group hover:text-zinc-100 transition-colors duration-200">
-                      <span className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-rose-400 after:transition-all after:duration-300 hover:after:w-full">{link.name}</span>
-                      <ArrowUpRight size={13} className="text-zinc-600 group-hover:text-rose-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 group hover:text-zinc-100 transition-colors duration-200"
+                    >
+                      <span className="relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-rose-400 after:transition-all after:duration-300 hover:after:w-full">
+                        {link.name}
+                      </span>
+                      <ArrowUpRight
+                        size={13}
+                        className="text-zinc-600 group-hover:text-rose-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
+                      />
                     </a>
                   </li>
                 ))}
@@ -106,17 +152,19 @@ export default function Footer() {
               <div className="group relative rounded-2xl p-px overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_rgba(220,38,38,0.2)]">
                 {/* Animated Border Ring */}
                 <div className="absolute inset-0 bg-linear-to-r from-red-500/50 via-rose-500/20 to-red-600/50 opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <a 
-                  href="#contact" 
+
+                <a
+                  href="#contact"
                   className="relative flex items-center justify-center gap-2 px-5 py-3.5 text-xs font-semibold text-zinc-200 bg-zinc-950/80 backdrop-blur-xl rounded-[15px] transition-all duration-300 group-hover:bg-zinc-900/40 group-hover:text-white"
                 >
-                  <Mail size={13} className="text-red-400 group-hover:scale-110 transition-transform duration-300" />
+                  <Mail
+                    size={13}
+                    className="text-red-400 group-hover:scale-110 transition-transform duration-300"
+                  />
                   <span>Get in Touch</span>
                 </a>
               </div>
             </div>
-
           </div>
         </div>
 
@@ -149,11 +197,13 @@ export default function Footer() {
               aria-label="Scroll to top"
               className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-800/80 bg-zinc-950/40 text-zinc-500 transition-all duration-300 hover:border-rose-500/40 hover:bg-rose-500/5 hover:text-rose-400 cursor-pointer group shadow-xs"
             >
-              <ArrowUp size={16} className="group-hover:-translate-y-0.5 transition-transform duration-300" />
+              <ArrowUp
+                size={16}
+                className="group-hover:-translate-y-0.5 transition-transform duration-300"
+              />
             </button>
           </div>
         </div>
-
       </div>
     </footer>
   );

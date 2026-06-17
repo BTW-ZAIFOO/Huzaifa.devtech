@@ -51,7 +51,10 @@ const educationData: EducationItem[] = [
 const EducationSection: React.FC = () => {
   return (
     // Added id="education" so your navbar can find it while keeping the tracking name lowercase
-    <section id="education" className="text-zinc-100 py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
+    <section
+      id="education"
+      className="text-zinc-100 py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center"
+    >
       <div className="max-w-5xl mx-auto w-full">
         {/* Section Header */}
         <div className="mb-20 text-center">
@@ -63,7 +66,8 @@ const EducationSection: React.FC = () => {
             Education <span className="text-red-600">History</span>
           </h2>
           <p className="mt-4 text-zinc-400 max-w-md mx-auto">
-            A timeline of my academic background and foundational training in engineering.
+            A timeline of my academic background and foundational training in
+            engineering.
           </p>
         </div>
 
