@@ -15,6 +15,35 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
+    role: "AI Intern",
+    company: "FlyRank AI",
+    duration: "June 2026 - Present",
+    description:
+      "Focusing on Front-end AI Engineering and the development of AI-powered web applications to create intuitive user experiences.",
+    achievements: [
+      "Working as an AI Intern at FlyRank AI, focusing on Front-end AI Engineering and AI-powered web applications.",
+      "Contributing to the development of responsive and user-friendly interfaces using modern web technologies.",
+      "Collaborating with team members to integrate AI solutions into real-world applications.",
+      "Gaining hands-on experience in AI workflows, prompt engineering, and frontend development.",
+      "Participating in remote agile development processes and project discussions.",
+      "Continuously learning and applying AI tools and technologies to improve user experiences.",
+    ],
+    tags: [
+      "Artificial Intelligence (AI)",
+      "Front-End Development",
+      "React.js",
+      "JavaScript",
+      "HTML5",
+      "CSS",
+      "Prompt Engineering",
+      "Generative AI Tools",
+      "Web Development",
+      "Git",
+      "GitHub",
+    ],
+    icon: undefined,
+  },
+  {
     role: "Chief Marketing Officer & Senior Software Engineer",
     company: "Nexgenztech",
     duration: "Feb 2026 - Present",
