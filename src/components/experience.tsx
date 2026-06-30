@@ -18,7 +18,7 @@ const experiences: ExperienceItem[] = [
     role: "AI Intern",
     company: "FlyRank AI",
     duration: "June 2026 - Present",
-    icon: <FaRocket />,
+    icon: <FaCode />,
     description:
       "Focusing on Front-end AI Engineering and the development of AI-powered web applications to create intuitive user experiences.",
     achievements: [
@@ -181,7 +181,7 @@ export default function Experience() {
         className="absolute inset-0 pointer-events-none select-none overflow-hidden"
         aria-hidden="true"
       >
-        <div className="absolute top-[-10%] right-[-10%] h-[600px] w-[600px] rounded-full bg-red-600/15 blur-[150px]" />
+        <div className="absolute top-[-10%] right-[-10%] h-150 w-[600px] rounded-full bg-red-600/15 blur-[150px]" />
         <div className="absolute bottom-[5%] left-[-10%] h-[600px] w-[600px] rounded-full bg-rose-600/10 blur-[180px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-red-500/5 blur-[200px]" />
       </div>
