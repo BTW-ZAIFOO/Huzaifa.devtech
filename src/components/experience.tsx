@@ -18,6 +18,7 @@ const experiences: ExperienceItem[] = [
     role: "AI Intern",
     company: "FlyRank AI",
     duration: "June 2026 - Present",
+    icon: <FaRocket />,
     description:
       "Focusing on Front-end AI Engineering and the development of AI-powered web applications to create intuitive user experiences.",
     achievements: [
@@ -41,13 +42,12 @@ const experiences: ExperienceItem[] = [
       "Git",
       "GitHub",
     ],
-    icon: undefined,
   },
   {
     role: "Chief Marketing Officer & Senior Software Engineer",
     company: "Nexgenztech",
     duration: "Feb 2026 - Present",
-    icon: <FaRocket />,
+    icon: <FaCode />,
     description:
       "Driving business growth and building scalable digital solutions by combining software engineering, AI innovation, and strategic marketing leadership.",
     achievements: [
